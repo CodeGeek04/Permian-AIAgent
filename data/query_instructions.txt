@@ -1,0 +1,204 @@
+USER_QUERY: 
+add a text '<TEXT_MASK>'
+
+INSTRUCTIONS: 
+Click button 'Text'.
+Click button 'Add Text'.
+Click the input text box.
+Type '<TEXT_MASK>' to this input box.
+Click button 'Media' to get back.
+
+
+USER_QUERY: 
+change text to color <COLOR_MASK>
+
+INSTRUCTIONS: 
+Click the input text box.
+Click color choose button.
+Convert color <COLOR_MASK> to its hex code.
+Type the hex code to text color hex code input box.
+Click 'Select' button.
+
+
+USER_QUERY: 
+change '<TEXT_MASK>' to color <COLOR_MASK>
+
+INSTRUCTIONS: 
+Click button 'Layers'.
+Click text layer which named '<TEXT_MASK>'.
+Click color choose button.
+Convert color <COLOR_MASK> to its hex code.
+Type the hex code to text color hex code input box.
+Click 'Select' button.
+Click button 'Media' to get back.
+
+
+USER_QUERY: 
+change text to '<TEXT_MASK>'
+
+INSTRUCTIONS: 
+Click the input text box.
+Clear the input text box first.
+Type '<TEXT_MASK>' to this input box.
+
+
+USER_QUERY: 
+change text '<TEXT_MASK_1>' to '<TEXT_MASK_2>'
+
+INSTRUCTIONS: 
+Click button 'Layers'.
+Click text layer which named '<TEXT_MASK_1>'.
+Click the input text box.
+Clear the input text box first.
+Type '<TEXT_MASK_2>' to this input box.
+Click button 'Media' to get back.
+
+
+USER_QUERY:
+make text caption start at <TIME_MASK_1> second and end at <TIME_MASK_2> second
+
+INSTRUCTIONS:
+Click the input text box.
+Click 'Timing' button.
+Click the start time input box.
+Type '<TIME_MASK_1>' to this input box.
+Click the end time input box.
+Type '<TIME_MASK_2>' to this input box.
+
+
+USER_QUERY:
+make text caption '<TEXT_MASK>' start at <TIME_MASK_1> second and end at <TIME_MASK_2> second
+
+INSTRUCTIONS:
+Click button 'Layers'.
+Click text layer which named '<TEXT_MASK>'.
+Click 'Timing' button.
+Click the start time input box.
+Type '<TIME_MASK_1>' to this input box.
+Click the end time input box.
+Type '<TIME_MASK_2>' to this input box.
+Click button 'Media' to get back.
+
+
+USER_QUERY:
+make text caption last for <TIME_MASK> second
+
+INSTRUCTIONS:
+Click the input text box.
+Click 'Timing' button.
+Get the start time.
+Calculate the end time, it should be start time plus the <TIME_MASK> second duration.
+Click the end time input box.
+Type the end time to this input box.
+
+
+USER_QUERY:
+make text caption '<TEXT_MASK>' last for <TIME_MASK> second
+
+INSTRUCTIONS:
+Click button 'Layers'.
+Click text layer which named '<TEXT_MASK>'.
+Click 'Timing' button.
+Get the start time.
+Calculate the end time, it should be start time plus the <TIME_MASK> second duration.
+Click the end time input box.
+Type the end time to this input box.
+Click button 'Media' to get back.
+
+
+USER_QUERY:
+change text style to <ADJ_MASK>
+
+INSTRUCTIONS: 
+Click the input text box.
+There are three types of text style, bold, italic, underline.
+Click the button corresponding to <ADJ_MASK>.
+
+
+USER_QUERY:
+remove <ADJ_MASK> text style
+
+INSTRUCTIONS: 
+Click the input text box.
+There are three types of text style, bold, italic, underline.
+Click the button corresponding to <ADJ_MASK>.
+
+
+USER_QUERY:
+change text '<TEXT_MASK>' style to <ADJ_MASK>
+
+INSTRUCTIONS: 
+Click button 'Layers'.
+Click text layer which named '<TEXT_MASK>'.
+There are three types of text style, bold, italic, underline.
+Click the button corresponding to <ADJ_MASK>.
+Click button 'Media' to get back.
+
+
+USER_QUERY:
+remove <ADJ_MASK> style from '<TEXT_MASK>'
+
+INSTRUCTIONS: 
+Click button 'Layers'.
+Click text layer which named '<TEXT_MASK>'.
+There are three types of text style, bold, italic, underline.
+Click the button corresponding to <ADJ_MASK>.
+Click button 'Media' to get back.
+
+
+USER_QUERY:
+adjust the text size to <NUMBER_MASK>
+
+INSTRUCTIONS:
+Click the input text box.
+Click font size input box.
+Type '<NUMBER_MASK>' into the input box.
+
+
+USER_QUERY:
+adjust the caption '<TEXT_MASK>' size to <NUMBER_MASK>
+
+INSTRUCTIONS:
+Click button 'Layers'.
+Click text layer which named '<TEXT_MASK>'.
+Click font size input box.
+Type '<NUMBER_MASK>' into the input box.
+Click button 'Media' to get back.
+
+
+USER_QUERY:
+increase the caption size or make the text larger
+
+INSTRUCTIONS:
+Click the input text box.
+Get font size.
+<NUMBER_MASK> = 10 if CASE_1, <NUMBER_MASK> = -10 if CASE_2.
+new font size = font size + <NUMBER_MASK>
+Click font size input box.
+Type new font size into the input box.
+
+
+USER_QUERY:
+reduce the size of the text or make the caption smaller
+
+INSTRUCTIONS:
+Click the input text box.
+Get font size.
+<NUMBER_MASK> = 10 if CASE_1, <NUMBER_MASK> = -10 if CASE_2.
+new font size = font size + <NUMBER_MASK>
+Click font size input box.
+Type new font size into the input box.
+
+
+USER_QUERY: 
+add <ADJ_MASK> sound effect
+
+INSTRUCTIONS: 
+Click button 'Audio'.
+Click 'Sound Effects' tab.
+Click sound effect search box.
+Type '<ADJ_MASK>' to this search box.
+Click 'Search' button.
+Wait 5 seconds for search results.
+Click the first sound effect link.
+Click button 'Media' to get back.

@@ -1,0 +1,23 @@
+2023-04-26 22:25:35,147 - AgentLogger - INFO - BUILDING DATALOADER.
+2023-04-26 22:25:35,597 - AgentLogger - INFO - INITIALIZING AGENT.
+2023-04-26 22:25:39,160 - AgentLogger - INFO - STARTING EVALUATION.
+2023-04-26 22:26:06,141 - AgentLogger - INFO - TOP@3 IS - True.
+2023-04-26 22:26:06,142 - AgentLogger - INFO - DONE add a text Hello Kapwing.
+2023-04-26 22:26:06,143 - AgentLogger - INFO - RUNNING TIME IS 3.7619340419769287.
+2023-04-26 22:26:06,143 - AgentLogger - INFO - IS FININSH - True.
+2023-04-26 22:26:25,541 - AgentLogger - INFO - TOP@3 IS - True.
+2023-04-26 22:26:25,542 - AgentLogger - INFO - DONE put To be continue... here.
+2023-04-26 22:26:25,542 - AgentLogger - INFO - RUNNING TIME IS 5.0853190422058105.
+2023-04-26 22:26:25,542 - AgentLogger - INFO - IS FININSH - True.
+2023-04-26 22:27:31,969 - AgentLogger - INFO - TOP@3 IS - True.
+2023-04-26 22:27:31,972 - AgentLogger - INFO - DONE captions like this : https://www.instagram.com/p/CjlFXLDB4O5/.
+2023-04-26 22:27:31,972 - AgentLogger - INFO - RUNNING TIME IS 8.149180889129639.
+2023-04-26 22:27:31,972 - AgentLogger - INFO - IS FININSH - True.
+2023-04-26 22:27:45,084 - AgentLogger - INFO - TOP@3 IS - True.
+2023-04-26 22:27:45,085 - AgentLogger - INFO - DONE New title screen put: The World's Most Unique Pizzeria?.
+2023-04-26 22:27:45,085 - AgentLogger - INFO - RUNNING TIME IS 4.927475929260254.
+2023-04-26 22:27:45,086 - AgentLogger - INFO - IS FININSH - True.
+2023-04-26 22:28:31,601 - AgentLogger - INFO - TOP@3 IS - True.
+2023-04-26 22:28:31,603 - AgentLogger - INFO - DONE text here - Frankies.
+2023-04-26 22:28:31,603 - AgentLogger - INFO - RUNNING TIME IS 5.491302967071533.
+2023-04-26 22:28:31,604 - AgentLogger - INFO - IS FININSH - True.

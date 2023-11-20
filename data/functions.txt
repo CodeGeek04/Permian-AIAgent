@@ -1,0 +1,200 @@
+FUNCTION_NAME: 
+add_text(text: str)
+
+FUNCTION_ARGS:
+text: str - the text you want to add
+
+WHEN_TO_USE: 
+add a text ... / text here / add caption / new title / add banner / put text
+
+
+FUNCTION_NAME: 
+change_text_color(color: str)
+
+FUNCTION_ARGS:
+color: str - text color you want to pick
+
+WHEN_TO_USE: 
+(use when no specific text content is given in user objective)
+change text to color ... / change caption color / caption color should be ... / make text color ... / choose color of text
+
+
+FUNCTION_NAME: 
+change_specific_text_color(text: str, color: str)
+
+FUNCTION_ARGS:
+text: str - the text you want to change the color of
+color: str - color you want to pick
+
+WHEN_TO_USE: 
+change caption color / caption color should be ... / make text color ... / choose color of text
+
+
+FUNCTION_NAME: 
+change_text_content(text: str)
+
+FUNCTION_ARGS:
+text: str - what you want to change the original text content to
+
+WHEN_TO_USE: 
+(use when no specific text content is given in user objective)
+change text to / the caption ... should be / ... change to ... / change text content
+
+
+FUNCTION_NAME: 
+change_specific_text_content(text1: str, text2: str)
+
+FUNCTION_ARGS:
+text1: str - the text you want to change the content of
+text2: str - the text you want to change the original text content to
+
+WHEN_TO_USE: 
+the caption ... should be / ... change to ... / change text content
+
+
+FUNCTION_NAME:
+adjust_text_start_end_time(time1: int, time2: int)
+
+FUNCTION_ARGS:
+time1: int - seconds, the time you want to adjust the start time of the text
+time2: int - seconds, the time you want to adjust the end time of the text
+
+WHEN_TO_USE:
+(use when no specific text content is given in user objective)
+make the caption ... starting from ... ending at ... / text begin at ... and end at ...
+
+
+FUNCTION_NAME:
+adjust_specific_text_start_end_time(text: str, time1: int, time2: int)
+
+FUNCTION_ARGS:
+text: str - the text you want to adjust the begin and end timestamp
+time1: int - seconds, the time you want to adjust the start time of the text
+time2: int - seconds, the time you want to adjust the end time of the text
+
+WHEN_TO_USE:
+make text xxx starting from ... ending at ... / text xxx begin at ... and end at ...
+
+
+FUNCTION_NAME:
+adjust_text_duration(time: int)
+
+FUNCTION_ARGS:
+time: int - seconds, the time length you want to change of the text
+
+WHEN_TO_USE:
+(use when no specific text content is given in user objective)
+make text last for ... second / keep text for ... second / hold caption for ... second / change text ... duration to ... sec
+
+
+FUNCTION_NAME:
+adjust_specific_text_duration(text: str, time: int)
+
+FUNCTION_ARGS:
+text: str - the text you want to change the duration of
+time: int - seconds, the time length you want to change of the text
+
+WHEN_TO_USE:
+keep text for ... second / hold caption for ... second / change text ... duration to ... sec
+
+
+FUNCTION_NAME:
+add_text_style(style_name: str)
+
+FUNCTION_ARGS:
+style_name: str - the style you want to change the text style to, it can only be 'bold', 'italic' or 'underline'
+
+WHEN_TO_USE: 
+(use when no specific text content is given in user objective)
+(There are three types of text style, bold, italic, underline.)
+change ... style bold / make ... italic style / underline caption ...
+
+
+FUNCTION_NAME:
+remove_text_style(style_name: str)
+
+FUNCTION_ARGS:
+style_name: str - the style you want to remove from the text style, it can only be 'bold', 'italic' or 'underline'
+
+WHEN_TO_USE: 
+(use when no specific text content is given in user objective)
+(There are three types of text style, bold, italic, underline.)
+remove bold style from ... / cancel using italic style / removal of underlined style from text ...
+
+
+FUNCTION_NAME:
+add_specific_text_style(style_name: str, text: str)
+
+FUNCTION_ARGS:
+style_name: str - the style you want to add to the text, it can only be 'bold', 'italic' or 'underline'
+text: str - the text you want to add to the style
+
+WHEN_TO_USE: 
+(There are three types of text style, bold, italic, underline.)
+change text ... style bold / make ... italic style / underline caption ...
+
+
+FUNCTION_NAME:
+remove_specific_text_style(style_name: str, text: str)
+
+FUNCTION_ARGS:
+style_name: str - the style you want to remove from the text, it can only be 'bold', 'italic' or 'underline'
+text: str - the text you want to remove from the style
+
+WHEN_TO_USE: 
+(There are three types of text style, bold, italic, underline.)
+remove bold style from ... / cancel using italic style / removal of underlined style from text ...
+
+
+FUNCTION_NAME:
+adjust_text_size(size: int)
+
+FUNCTION_ARGS:
+size: int - the font size you want to use for the text
+
+WHEN_TO_USE:
+(use when no specific text content is given in user objective)
+adjust the text size to ... / make text size ... / adjust the caption size to ...
+
+
+FUNCTION_NAME:
+adjust_specific_text_size(text: str, size: int)
+
+FUNCTION_ARGS:
+text: str - the text you want to change the size of
+size: int - the new size of the text
+
+WHEN_TO_USE:
+adjust the caption xxx size to .. / make text size ... / adjust the caption size to ...
+
+
+FUNCTION_NAME:
+increase_size()
+
+FUNCTION_ARGS:
+None
+
+WHEN_TO_USE:
+(use when no specific text content is given in user objective)
+make the text ... bigger / adjust ... larger / increase the caption size
+
+
+FUNCTION_NAME:
+reduce_size()
+
+FUNCTION_ARGS:
+None
+
+WHEN_TO_USE:
+(use when no specific text content is given in user objective)
+make the ... smaller / adjust ... smaller / reduce the text font size
+
+
+FUNCTION_NAME: 
+add_sound_effect(keywords: str)
+
+FUNCTION_ARGS:
+keywords: str - words or phrases that describe the sound effect
+
+WHEN_TO_USE: 
+add a ... SFX / find a ... SFX / need sound effect ... here / add xxx sound effect

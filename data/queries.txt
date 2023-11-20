@@ -1,0 +1,128 @@
+USER_QUERY: 
+add a text '<TEXT_MASK>'
+
+SIMILAR_STATEMENTS: 
+text here / add caption / new title / add banner / put text
+
+
+USER_QUERY: 
+change text to color <COLOR_MASK>
+
+SIMILAR_STATEMENTS: 
+change caption color / caption color should be ... / make text color ... / choose color of text
+
+
+USER_QUERY: 
+change '<TEXT_MASK>' to color <COLOR_MASK>
+
+SIMILAR_STATEMENTS: 
+change caption color / caption color should be ... / make text color ... / choose color of text
+
+
+USER_QUERY: 
+change text to '<TEXT_MASK>'
+
+SIMILAR_STATEMENTS: 
+the caption ... should be / ... change to ... / change text content
+
+
+USER_QUERY: 
+change text '<TEXT_MASK_1>' to '<TEXT_MASK_2>'
+
+SIMILAR_STATEMENTS: 
+the caption ... should be / ... change to ... / change text content
+
+
+USER_QUERY:
+make text caption start at <TIME_MASK_1> second and end at <TIME_MASK_2> second
+
+SIMILAR_STATEMENTS:
+make ... starting from ... ending at ... / text begin at ... and end at ...
+
+
+USER_QUERY:
+make text caption '<TEXT_MASK>' start at <TIME_MASK_1> second and end at <TIME_MASK_2> second
+
+SIMILAR_STATEMENTS:
+make ... starting from ... ending at ... / text begin at ... and end at ...
+
+
+USER_QUERY:
+make text caption last for <TIME_MASK> second
+
+SIMILAR_STATEMENTS:
+keep text for ... second / hold caption for ... second / change text ... duration to ... sec
+
+
+USER_QUERY:
+make text caption '<TEXT_MASK>' last for <TIME_MASK> second
+
+SIMILAR_STATEMENTS:
+keep text for ... second / hold caption for ... second / change text ... duration to ... sec
+
+
+USER_QUERY:
+change text style to <ADJ_MASK>
+
+SIMILAR_STATEMENTS: 
+(There are three types of text style, bold, italic, underline.)
+change ... style bold / make ... italic style / underline caption ...
+
+
+USER_QUERY:
+remove <ADJ_MASK> text style 
+
+SIMILAR_STATEMENTS: 
+(There are three types of text style, bold, italic, underline.)
+remove bold style from ... / cancel using italic style / removal of underlined style from text ...
+
+
+USER_QUERY:
+change text '<TEXT_MASK>' style to <ADJ_MASK>
+
+SIMILAR_STATEMENTS: 
+(There are three types of text style, bold, italic, underline.)
+change ... style bold / make ... italic style / underline caption ...
+
+
+USER_QUERY:
+remove <ADJ_MASK> style from '<TEXT_MASK>'
+
+SIMILAR_STATEMENTS: 
+(There are three types of text style, bold, italic, underline.)
+remove bold style from ... / cancel using italic style / removal of underlined style from text ...
+
+
+USER_QUERY:
+adjust the text size to <NUMBER_MASK>
+
+SIMILAR_STATEMENTS:
+make text size ... / adjust the caption size to ...
+
+
+USER_QUERY:
+adjust the caption '<TEXT_MASK>' size to <NUMBER_MASK>
+
+SIMILAR_STATEMENTS:
+make text size ... / adjust the caption size to ...
+
+
+USER_QUERY:
+increase the caption size or make the text larger
+
+SIMILAR_STATEMENTS:
+make the text ... bigger / adjust ... larger
+
+
+USER_QUERY:
+reduce the size of the text or make the caption smaller
+
+SIMILAR_STATEMENTS:
+make the ... smaller / adjust ... smaller
+
+
+USER_QUERY: 
+add <TEXT_MASK> sound effect
+
+SIMILAR_STATEMENTS: 
+add a ... SFX / find a ... SFX / need sound effect ... here

@@ -1,0 +1,252 @@
+checker_description: 
+  Check whether the objective is realizable. Always use first.
+
+checker_prompt_vanilla: |
+  Given the video editing function definitions relevant to the user objective, check whether the objective is incomplete or vague.
+  For example, if the objective is 'color it', you CANNOT directly use 'change_caption_color', because 'change_caption_color' needs input 'color' such as yellow and green.
+  Therefore, when you see objective like these, you MUST directly return the Final Answer 'What did you mean?' .
+  If the objective is vague or incomplete, you CANNOT provide the user with the tools they need to complete the task, you should just return the Final Answer 'What did you mean?'.
+  But if the objective is NOT vague or incomplete, you can return answer like 'the objective is realizable.'.
+  
+  The relevant function definitions: 
+  {context}
+
+  Objective: {objective}
+  Your answer:
+
+checker_prompt_fewshot: | 
+  Given the video editing function definitions relevant to the user objective, check whether the objective is realizable.
+  If the content of objective includes words related to video editing, your answer should be 'the objective is realizable.'.
+  If the objective is not about video editing and hard to understand, you should just return the answer 'What did you mean?'.
+
+  The relevant function definitions: 
+  {context}
+
+  Objective: {objective}
+
+  If the content of objective is a word or a phrase, sometimes in all caps, and the phrase has nothing to do with the video clip, 
+  then this is usually the user wants to modify the text or subtitles, for example
+      (1) 'BLONDE'
+      (2) 'Cardio'
+      (3) 'ANTIGONA'
+      (4) 'Make this upper case - FINANCIAL'
+      (5) 'MILLIONS ('
+      (6) 'AG1 not AG'
+      (7) 'Because you staying there'
+      (8) 'They just opened up'
+      (9) 'hold franky's souvlaki :1 longer'
+      (10) 'As a kid I used to'
+  Then, you answer should be 'the objective {objective} is realizable using caption or text function'.
+
+  If the function related to the objective requires timestamp as input, and the objective itself does not contain a description of the timestamp, 
+  then please answer directly: 'What is the timestamp?'
+
+  Your answer: 
+
+checker_prompt_fewshot_improved: |
+  An objective is the user input to the video clip intelligent body.
+  Given the user objective, check if the objective is one of the following types.
+  1. Type One: Content contains vocabulary related to video editing, for example 
+      (1) 'Add full screen banner with texts Part 1'
+      (2) 'Zoom th escreen in'
+      (3) 'correct caption- your image'
+      (4) 'increase volume as well'
+      (5) 'Remove the white glow from the two people on right'
+      (6) 'Can you put a bringal emoji here?'
+      (7) 'Change the transition of the text!'
+      (8) 'put the banner-PIXIE CUT WITH LINES'
+  2. Type Two: The content is a word or a phrase, sometimes in all caps, and sometimes the phrase has nothing to do with the video clip. 
+  This is usually when the user wants to modify the text or subtitles, for example
+      (1) 'BLONDE'
+      (2) 'Cardio'
+      (3) 'ANTIGONA'
+      (4) 'Make this upper case - FINANCIAL'
+      (5) 'MILLIONS ('
+      (6) 'AG1 not AG'
+      (7) 'Because you staying there'
+      (8) 'They just opened up'
+      (9) 'hold franky's souvlaki :1 longer'
+      (10) 'As a kid I used to'
+  3. Type Three: The content is not either of the above and is difficult to understand, or is unrelated to video editing, 
+  or is an unreasonable requirement that the video editing intelligences are completely unable to do. For example
+      (1) 'Write a blog for me and post it on twitter'
+      (2) 'Use Amazon to help me buy a pair of black pants'
+      (3) 'Get me a glass of water please'
+
+  Now, the objective is: {objective}
+  If this objective belongs to Type One, you should answer: {objective}
+  If this objective belongs to Type Two, you should answer: Select a caption / text function for text '{objective}'
+  If this objective belongs to Type Three, you should answer: What do you mean by {objective}?
+  Your answer: 
+
+recommender_description: Recommend the video editing function most relevant to the objective.
+
+executor_description: | 
+  Execute the video editing function with parameters. 
+  According to the objective and the function's definition that recommender generated, the executor query should be function_name(parameter1, parameter2, ..). 
+  If the parameter is string, you MUST use single quotes, for example shuffleLeftBottom should be 'shuffleLeftBottom'.
+
+executor_prompt: |
+  Execute failed, The error message reported is {error}.
+
+main_agent_prefix_prompt_vanilla: |
+  You are an agent operating a video editing online site, and you need to use the tools in sequence according to the objective as best you can.
+  In every turn, you must first use the 'checker', then use the 'recommender', then the 'executor'.
+  The recommender should use the answer given by checker, and the executor should use the answer given by recommender.
+  When 'checker' return "What do you mean by ...?", you MUST stop using 'recommender' and 'executor' and finish.
+  You have access to the following tools: 
+
+main_agent_prefix_prompt: |
+  You are an agent operating a video editing online site given user's objective, and you need to use the tools in sequence according to the objective as best you can.
+  In every turn, you must first use the 'checker', then use the 'recommender', then the 'executor'.
+  The recommender should use the answer given by checker, and the executor should use the answer given by recommender.
+
+  If the checker's answer is: 'What is the timestamp?', you should stop using recommender and executor,
+  and then directly answer the user 'What is the timestamp?'.
+
+  After that, the user will answer you what the exact timestamp is. You should combine this timestamp with the previous objective to get a new objective. 
+  For example, if the user's last objective was "change the text to xxx", and this time the timestamp is "15 second", then the new objective is "change the text at 15 second to xxx".
+  Then, use the tool 'checker', then use the 'recommender', then the 'executor' again!
+
+  If the recommended function related to the objective doesn't require timestamp as input, you MUST discard the given user timestamp. 
+  You have access to the following tools: 
+
+main_agent_suffix_prompt: |
+  Now, begin.
+
+  {chat_history}
+  Objective: {input}
+  {agent_scratchpad}
+
+timestamp_query_prompt: |
+  {content}, the user now at timestamp {timestamp} second, 
+  this timestamp should be used ONLY IF the recommended function needs timestamp of current position as input.
+
+script_main_agent_template_prompt: |
+  You are an agent operating a video editing online site given user's objective, and you need to use the tools in sequence according to the objective as best you can.
+  You have access to the following tools:
+
+  {tools}
+
+  In every turn, you MUST first use the 'steps_generator', then use the 'script_generator', then the 'executor', and finally finish.
+  If you are not sure about something, such as parameters or attribute values, you can use 'human' to ask the user directly.
+  The 'script_generator' must only output python selenium code.
+  If the executor returns 'Execute failed, The error message reported is ...', then you should make some changes to the selenium code in response to the reported error, and re-run the whole process once again for 3 times most.
+  
+  Use the following FORMAT:
+
+  Question: the input question you must answer
+  Thought: you should always think about what to do
+  Action: the action to take, should be one of [{tool_names}]
+  Action Input: the input to the action
+  Observation: the result of the action
+  ... (this Thought/Action/Action Input/Observation can repeat N times)
+  Thought: I now know the final answer
+  Final Answer: the final answer to the original input question
+
+  Begin! Remember that you should always use this FORMAT!
+  Question: {input}
+  {agent_scratchpad}
+
+script_main_agent_prefix_prompt_memory: |
+  You are an agent operating a video editing online site given user's objective, and you need to use the tools in sequence according to the objective as best you can.
+  In every turn, you MUST first use the 'steps_generator', then use the 'script_generator', then the 'executor', and finally finish.
+  If you are not sure about something, such as parameters or attribute values, you can use 'human' to ask the user directly.
+  The 'script_generator' must only output python selenium code.
+  If the executor returns 'Execute failed, The error message reported is ...', then you should make some changes to the selenium code in response to the reported error, and re-run the whole process once again for 3 times most.
+  You have access to the following tools: 
+
+script_main_agent_suffix_prompt_memory: |
+  In every turn, you MUST first use the 'steps_generator', then use the 'script_generator', then the 'executor'. 
+  Now, begin.
+
+  {chat_history}
+  Objective: {input}
+  {agent_scratchpad}
+
+mask_prompt: |
+  We have defined several replaceable masks in advance, they are:
+    <TEXT_MASK> needs to be replaced with the text or caption requested by the user.
+    <COLOR_MASK> needs to be replaced with the color requested by the user.
+    <ADJ_MASK> needs to be replaced with user-requested adjectives, which usually describe video, text or audio.
+    <TIME_MASK> needs to be replaced with the time requested by user, such as a timestamp or a duration.
+    <NUMBER_MASK> needs to be replaced with values of certain attributes requested by user, such as font size or volume.
+
+steps_generator_prompt: |
+  Given the user's query, break down step by step into instructions. 
+  Each step is an action on the browser, usually starting with 'Click', 'Type', 'Wait'.
+  You must not be missing steps. Every sentence in the INSTRUCTIONS is useful. But don't use SCRIPTS for now.
+  Here are some masks that you can use to replace specific words based on user objective.
+
+script_generator_prompt: |
+  Given a step-by-step instructions, output the selenium script code in SCRIPTS according to INSTRUCTIONS.
+  You must not be missing any scripts. You should output complete code. Every line of code in the SCRIPTS is useful.
+  Ensure that every line of code in SCRIPTS is output in its entirety.
+  You should always output python selenium code in SCRIPTS. Here are some masks that you can use to replace specific code snippets in SCRIPTS based on user objective. 
+
+script_executor_description: Execute the given selenium code.
+
+vectorstore_prefix: |
+  You are an agent operating a video editing online site given user's objective. You need to finish tasks to achieve user's requirements. Below is one sub-task.
+
+  Select three relevant USER_QUERY given user objective. You should check both USER_QUERY and SIMILAR_STATEMENTS for simlarity.
+  The objective is: {query}. 
+  For each USER_QUERY you select, if it contains <MASK>, then you need to replace <MASK> with the specific content.
+
+  You need to construct a dictionary element for each USER_QUERY you select:
+  {{"USER_QUERY": "the USER_QUERY you select", "MASK": ["words to replace <MASK_1>", "words to replace <MASK_2>", ...]}}
+
+  Notice: "the USER_QUERY you select" should always be the Unreplaced, original USER_QUERY you find. <MASK> is required to be reserved in it.
+
+vectorstore_suffix: | 
+  Your output format should be:
+  [{"USER_QUERY": "the first USER_QUERY you select", "MASK": ["words to replace <MASK_1>", "words to replace <MASK_2>", ...]}, 
+  {"USER_QUERY": "the second USER_QUERY you select", "MASK": ["words to replace <MASK_1>", "words to replace <MASK_2>", ...]}, 
+  {"USER_QUERY": "the third USER_QUERY you select", "MASK": ["words to replace <MASK_1>", "words to replace <MASK_2>", ...]}]
+
+simple_script_main_agent_template_prompt: |
+  You are an agent operating a video editing online site given user's objective. 
+  You have access to this tool:
+  {tools}
+
+  In every turn, you MUST only use this 'executor' and finish.
+  The 'executor' tool input should be user's objective query.
+  If the executor returns 'Execute failed, The error message reported is ...', then you should make some changes to the selenium code in response to the reported error, and re-run the whole process once again for 3 times most.
+  
+  Use the following FORMAT:
+
+  Question: the input question you must answer
+  Thought: you should always think about what to do
+  Action: the action to take, should be one of [{tool_names}]
+  Action Input: the input to the action
+  Observation: the result of the action
+  ... (this Thought/Action/Action Input/Observation can repeat N times)
+  Thought: I now know the final answer
+  Final Answer: the final answer to the original input question
+
+  Begin! Remember that you should always use this FORMAT!
+  Question: {input}
+  {agent_scratchpad}
+
+simple_script_executor_description: |
+  Given the user's query, execute the correspond selenium scripts.
+
+simple_scripts_prompt: |
+  The user's objective query is {query}.
+  Given this user's query, output the selenium script code in SCRIPTS according to USER_QUERY.
+  You must not be missing any scripts. You should output complete code. Every line of code in the SCRIPTS is useful.
+  Ensure that every line of code in SCRIPTS is output in its entirety.
+  You should always output python selenium code in SCRIPTS. Here are some masks that you can use to replace specific code snippets in SCRIPTS based on user objective. 
+
+fast_func_prompt: |
+  You are an agent operating a video editing online site given user's objective. You need to finish tasks to achieve user's requirements. Below is one sub-task.
+
+  The user objective is: {query}. 
+  Return the 3 most relevant FUNCTION given user objective. You should check both FUNCTION_NAME and FUNCTION_ARGS for simlarity.
+  The FUNCTION's input variables should be replaced according to objective and the FUNCTION_ARGS. 
+
+  If you don't know what specific function_args should be used, you can simply use "<NULL>" as a placeholder for input variables.
+  Your output format should be:
+  function_name_1(function_args1="", function_args2="", ...)
+  function_name_2(function_args1="", function_args2="", ...)
+  function_name_3(function_args1="", function_args2="", ...)

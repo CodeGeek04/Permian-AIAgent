@@ -1,0 +1,10 @@
+2023-04-28 01:02:11,038 - AgentLogger - INFO - BUILDING DATALOADER.
+2023-04-28 01:02:11,365 - AgentLogger - INFO - INITIALIZING AGENT.
+2023-04-28 01:02:34,048 - AgentLogger - INFO - STARTING EVALUATION.
+2023-04-28 01:03:45,030 - AgentLogger - INFO - TOP@3 IS - True.
+2023-04-28 01:03:45,031 - AgentLogger - INFO - DONE add a text Hello Kapwing.
+2023-04-28 01:03:45,031 - AgentLogger - INFO - RUNNING TIME IS 5.657390832901001.
+2023-04-28 01:03:45,031 - AgentLogger - INFO - IS FININSH - True.
+2023-04-28 01:03:45,032 - AgentLogger - INFO - The mean accuracy is 1.0.
+2023-04-28 01:03:45,032 - AgentLogger - INFO - The mean latency is 5.657390832901001.
+2023-04-28 01:03:45,032 - AgentLogger - INFO - The mean top3 accuracy is 1.0.

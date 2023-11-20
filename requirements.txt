@@ -1,0 +1,10 @@
+setuptools
+langchain
+llama_index
+pinecone
+pyperclip
+selenium
+anthropic
+tiktoken
+gptcache
+webcolors

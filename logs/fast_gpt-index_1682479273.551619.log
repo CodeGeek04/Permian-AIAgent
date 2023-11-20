@@ -1,0 +1,182 @@
+2023-04-26 11:21:13,553 - AgentLogger - INFO - BUILDING DATALOADER.
+2023-04-26 11:21:13,872 - AgentLogger - INFO - INITIALIZING AGENT.
+2023-04-26 11:21:53,814 - AgentLogger - INFO - STARTING EVALUATION.
+2023-04-26 11:24:53,845 - AgentLogger - INFO - DONE add a text Hello Kapwing.
+2023-04-26 11:24:53,859 - AgentLogger - INFO - RUNNING TIME IS 2.890575885772705.
+2023-04-26 11:24:53,859 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:25:39,213 - AgentLogger - INFO - DONE put To be continue... here.
+2023-04-26 11:25:39,215 - AgentLogger - INFO - RUNNING TIME IS 4.027036905288696.
+2023-04-26 11:25:39,215 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:25:58,342 - AgentLogger - INFO - DONE captions like this : https://www.instagram.com/p/CjlFXLDB4O5/.
+2023-04-26 11:25:58,344 - AgentLogger - INFO - RUNNING TIME IS 3.6069388389587402.
+2023-04-26 11:25:58,344 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:26:11,108 - AgentLogger - INFO - DONE New title screen put: The World's Most Unique Pizzeria?.
+2023-04-26 11:26:11,109 - AgentLogger - INFO - RUNNING TIME IS 3.40814208984375.
+2023-04-26 11:26:11,109 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:27:42,039 - AgentLogger - INFO - DONE text here - Frankies.
+2023-04-26 11:27:42,041 - AgentLogger - INFO - RUNNING TIME IS 2.594900131225586.
+2023-04-26 11:27:42,041 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:27:55,732 - AgentLogger - INFO - DONE Add banner with texts "Part 1".
+2023-04-26 11:27:55,733 - AgentLogger - INFO - RUNNING TIME IS 2.616872787475586.
+2023-04-26 11:27:55,733 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:28:01,192 - AgentLogger - INFO - DONE put BOXHAUS as banner text.
+2023-04-26 11:28:01,194 - AgentLogger - INFO - RUNNING TIME IS 2.8451766967773438.
+2023-04-26 11:28:01,194 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:29:43,432 - AgentLogger - INFO - DONE Change "Hello Kapwing" to orange.
+2023-04-26 11:29:43,435 - AgentLogger - INFO - RUNNING TIME IS 3.13254714012146.
+2023-04-26 11:29:43,436 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:30:57,953 - AgentLogger - INFO - DONE Change text color to sea green.
+2023-04-26 11:30:57,956 - AgentLogger - INFO - RUNNING TIME IS 3.3032822608947754.
+2023-04-26 11:30:57,956 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:31:06,168 - AgentLogger - INFO - DONE caption 'https://www.instagram.com/p/CjlFXLDB4O5/' color should be red.
+2023-04-26 11:31:06,168 - AgentLogger - INFO - RUNNING TIME IS 3.775290012359619.
+2023-04-26 11:31:06,169 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:31:17,147 - AgentLogger - INFO - DONE adjust 'The World's Most Unique Pizzeria?' color navy.
+2023-04-26 11:31:17,150 - AgentLogger - INFO - RUNNING TIME IS 3.6037049293518066.
+2023-04-26 11:31:17,150 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:35:54,880 - AgentLogger - INFO - DONE make text color deep pink.
+2023-04-26 11:35:54,883 - AgentLogger - INFO - RUNNING TIME IS 3.043177843093872.
+2023-04-26 11:35:54,883 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:36:02,182 - AgentLogger - INFO - DONE pls change caption to that lime color.
+2023-04-26 11:36:02,183 - AgentLogger - INFO - RUNNING TIME IS 4.810766220092773.
+2023-04-26 11:36:02,183 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:36:21,446 - AgentLogger - INFO - DONE choose white color for BOXHAUS.
+2023-04-26 11:36:21,461 - AgentLogger - INFO - RUNNING TIME IS 2.8072597980499268.
+2023-04-26 11:36:21,462 - AgentLogger - INFO - IS FININSH - True.
+2023-04-26 11:36:39,692 - AgentLogger - INFO - DONE Change "Hello Kapwing" to Hello.
+2023-04-26 11:36:39,696 - AgentLogger - INFO - RUNNING TIME IS 3.3905773162841797.
+2023-04-26 11:36:39,697 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:36:51,716 - AgentLogger - INFO - DONE Change text To be continue… to The End.
+2023-04-26 11:36:51,717 - AgentLogger - INFO - RUNNING TIME IS 3.2945327758789062.
+2023-04-26 11:36:51,717 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:37:12,258 - AgentLogger - INFO - DONE please change text  here to "https://www.instagram.com/login" instead.
+2023-04-26 11:37:12,259 - AgentLogger - INFO - RUNNING TIME IS 3.3395371437072754.
+2023-04-26 11:37:12,259 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:37:17,929 - AgentLogger - INFO - DONE "The World's Most Unique Pizzeria?" change to "Most Unique Pizzeria Here!".
+2023-04-26 11:37:17,930 - AgentLogger - INFO - RUNNING TIME IS 3.17305588722229.
+2023-04-26 11:37:17,930 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:37:26,446 - AgentLogger - INFO - DONE the caption Frankies should be Franky.
+2023-04-26 11:37:26,447 - AgentLogger - INFO - RUNNING TIME IS 3.1515331268310547.
+2023-04-26 11:37:26,447 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:37:36,947 - AgentLogger - INFO - DONE Please change text to 'Section 2'.
+2023-04-26 11:37:36,948 - AgentLogger - INFO - RUNNING TIME IS 3.544904947280884.
+2023-04-26 11:37:36,948 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:41:18,406 - AgentLogger - INFO - DONE AGAIN CHANGE TEXT TO "THEBOX".
+2023-04-26 11:41:18,409 - AgentLogger - INFO - RUNNING TIME IS 3.6991353034973145.
+2023-04-26 11:41:18,410 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:41:44,662 - AgentLogger - INFO - DONE make text Hello starting from 0 to 2 second.
+2023-04-26 11:41:44,663 - AgentLogger - INFO - RUNNING TIME IS 4.348084926605225.
+2023-04-26 11:41:44,663 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:41:58,579 - AgentLogger - INFO - DONE make this text start at  2s, end at 4s.
+2023-04-26 11:41:58,580 - AgentLogger - INFO - RUNNING TIME IS 3.6596641540527344.
+2023-04-26 11:41:58,580 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:42:56,108 - AgentLogger - INFO - DONE The caption "https://www.instagram.com/login" should begin at 4s end at 6s.
+2023-04-26 11:42:56,110 - AgentLogger - INFO - RUNNING TIME IS 3.420421838760376.
+2023-04-26 11:42:56,110 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:43:22,143 - AgentLogger - INFO - DONE Here the text needs to be at 6 to 8 second.
+2023-04-26 11:43:22,146 - AgentLogger - INFO - RUNNING TIME IS 3.402675151824951.
+2023-04-26 11:43:22,146 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:43:30,374 - AgentLogger - INFO - DONE and change Franky timestamp: start 8s end 10s.
+2023-04-26 11:43:30,375 - AgentLogger - INFO - RUNNING TIME IS 3.5438120365142822.
+2023-04-26 11:43:30,375 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:44:20,742 - AgentLogger - INFO - DONE Put text 'Section 2' between 10 and 12 seconds.
+2023-04-26 11:44:20,757 - AgentLogger - INFO - RUNNING TIME IS 3.0452709197998047.
+2023-04-26 11:44:20,757 - AgentLogger - INFO - IS FININSH - True.
+2023-04-26 11:46:11,067 - AgentLogger - INFO - DONE "THEBOX" text time adjust to 12s - 14s.
+2023-04-26 11:46:11,068 - AgentLogger - INFO - RUNNING TIME IS 3.6793620586395264.
+2023-04-26 11:46:11,068 - AgentLogger - INFO - IS FININSH - True.
+2023-04-26 11:47:15,471 - AgentLogger - INFO - DONE keep the text for 1 sec long.
+2023-04-26 11:47:15,474 - AgentLogger - INFO - RUNNING TIME IS 3.2055649757385254.
+2023-04-26 11:47:15,474 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:48:58,716 - AgentLogger - INFO - DONE text 'The End' should last for one second.
+2023-04-26 11:48:58,719 - AgentLogger - INFO - RUNNING TIME IS 3.0359480381011963.
+2023-04-26 11:48:58,719 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:49:51,115 - AgentLogger - INFO - DONE hold caption here on screen 1s.
+2023-04-26 11:49:51,121 - AgentLogger - INFO - RUNNING TIME IS 4.5471532344818115.
+2023-04-26 11:49:51,122 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:50:00,572 - AgentLogger - INFO - DONE change text Most Unique Pizzeria Here! duration to one sec.
+2023-04-26 11:50:00,573 - AgentLogger - INFO - RUNNING TIME IS 3.44266676902771.
+2023-04-26 11:50:00,573 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:50:49,724 - AgentLogger - INFO - DONE Franky need to last for 1 second.
+2023-04-26 11:50:49,729 - AgentLogger - INFO - RUNNING TIME IS 3.246701717376709.
+2023-04-26 11:50:49,730 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:50:58,625 - AgentLogger - INFO - DONE here time length of the caption is 1s.
+2023-04-26 11:50:58,625 - AgentLogger - INFO - RUNNING TIME IS 3.4089510440826416.
+2023-04-26 11:50:58,626 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:51:13,687 - AgentLogger - INFO - DONE lets make THEBOX last for one second.
+2023-04-26 11:51:13,688 - AgentLogger - INFO - RUNNING TIME IS 3.3884501457214355.
+2023-04-26 11:51:13,688 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:51:48,280 - AgentLogger - INFO - DONE make caption Hello bolder.
+2023-04-26 11:51:48,282 - AgentLogger - INFO - RUNNING TIME IS 3.0465259552001953.
+2023-04-26 11:51:48,282 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:57:35,539 - AgentLogger - INFO - DONE change text "The End" style italic.
+2023-04-26 11:57:35,553 - AgentLogger - INFO - RUNNING TIME IS 3.212616205215454.
+2023-04-26 11:57:35,553 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:57:41,987 - AgentLogger - INFO - DONE I want "https://www.instagram.com/login" underlined.
+2023-04-26 11:57:41,987 - AgentLogger - INFO - RUNNING TIME IS 4.565624237060547.
+2023-04-26 11:57:41,987 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:57:46,376 - AgentLogger - INFO - DONE bold this text.
+2023-04-26 11:57:46,377 - AgentLogger - INFO - RUNNING TIME IS 2.6673951148986816.
+2023-04-26 11:57:46,377 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:58:02,189 - AgentLogger - INFO - DONE make it a bit italic style.
+2023-04-26 11:58:02,190 - AgentLogger - INFO - RUNNING TIME IS 3.6882522106170654.
+2023-04-26 11:58:02,191 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:59:15,828 - AgentLogger - INFO - DONE pls underline the text 'Section 2'.
+2023-04-26 11:59:15,831 - AgentLogger - INFO - RUNNING TIME IS 2.5453829765319824.
+2023-04-26 11:59:15,832 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 11:59:30,429 - AgentLogger - INFO - DONE CAN YOU CHANGE "THEBOX" MORE BOLDER.
+2023-04-26 11:59:30,431 - AgentLogger - INFO - RUNNING TIME IS 3.5701119899749756.
+2023-04-26 11:59:30,431 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 12:00:00,386 - AgentLogger - INFO - DONE remove bold style from text Hello.
+2023-04-26 12:00:00,387 - AgentLogger - INFO - RUNNING TIME IS 3.5499420166015625.
+2023-04-26 12:00:00,387 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 12:00:05,234 - AgentLogger - INFO - DONE Removal of italic style.
+2023-04-26 12:00:05,234 - AgentLogger - INFO - RUNNING TIME IS 4.056864976882935.
+2023-04-26 12:00:05,234 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 12:00:09,109 - AgentLogger - INFO - DONE cancel using underline style to this text.
+2023-04-26 12:00:09,110 - AgentLogger - INFO - RUNNING TIME IS 3.3234550952911377.
+2023-04-26 12:00:09,110 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 12:00:18,723 - AgentLogger - INFO - DONE change Hello font size to 64.
+2023-04-26 12:00:18,724 - AgentLogger - INFO - RUNNING TIME IS 3.189728021621704.
+2023-04-26 12:00:18,725 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 12:00:22,572 - AgentLogger - INFO - DONE make text font size 28 here.
+2023-04-26 12:00:22,573 - AgentLogger - INFO - RUNNING TIME IS 2.8550667762756348.
+2023-04-26 12:00:22,574 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 12:00:27,273 - AgentLogger - INFO - DONE we adjust caption size 16.
+2023-04-26 12:00:27,273 - AgentLogger - INFO - RUNNING TIME IS 2.9787228107452393.
+2023-04-26 12:00:27,273 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 12:00:34,708 - AgentLogger - INFO - DONE "Most Unique Pizzeria Here!" font size should be 48.
+2023-04-26 12:00:34,709 - AgentLogger - INFO - RUNNING TIME IS 3.7300920486450195.
+2023-04-26 12:00:34,709 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 12:01:25,575 - AgentLogger - INFO - DONE INCREASE THE TEXT SIZE.
+2023-04-26 12:01:25,578 - AgentLogger - INFO - RUNNING TIME IS 2.887418746948242.
+2023-04-26 12:01:25,578 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 12:01:34,438 - AgentLogger - INFO - DONE and reduce the font size of the title here.
+2023-04-26 12:01:34,439 - AgentLogger - INFO - RUNNING TIME IS 4.059337139129639.
+2023-04-26 12:01:34,439 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 12:01:46,955 - AgentLogger - INFO - DONE Also make the subtitle font size smaller.
+2023-04-26 12:01:46,955 - AgentLogger - INFO - RUNNING TIME IS 2.77532696723938.
+2023-04-26 12:01:46,955 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 12:02:33,409 - AgentLogger - INFO - DONE Add a scary sound effect.
+2023-04-26 12:02:33,412 - AgentLogger - INFO - RUNNING TIME IS 3.059943914413452.
+2023-04-26 12:02:33,412 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 12:02:41,530 - AgentLogger - INFO - DONE need a gta sound effect here.
+2023-04-26 12:02:41,531 - AgentLogger - INFO - RUNNING TIME IS 5.039712905883789.
+2023-04-26 12:02:41,532 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 12:02:55,761 - AgentLogger - INFO - DONE find a 'cartoon running' SFX and add it.
+2023-04-26 12:02:55,778 - AgentLogger - INFO - RUNNING TIME IS 2.6519758701324463.
+2023-04-26 12:02:55,779 - AgentLogger - INFO - IS FININSH - True.
+2023-04-26 12:03:43,815 - AgentLogger - INFO - DONE add happy sound effct.
+2023-04-26 12:03:43,818 - AgentLogger - INFO - RUNNING TIME IS 2.9156711101531982.
+2023-04-26 12:03:43,818 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 12:04:06,022 - AgentLogger - INFO - DONE put a 'text pop' sound effect please.
+2023-04-26 12:04:06,025 - AgentLogger - INFO - RUNNING TIME IS 2.5203471183776855.
+2023-04-26 12:04:06,025 - AgentLogger - INFO - IS FININSH - True.
+2023-04-26 12:04:29,589 - AgentLogger - INFO - DONE I need to add up minecraft SFX.
+2023-04-26 12:04:29,591 - AgentLogger - INFO - RUNNING TIME IS 2.64626407623291.
+2023-04-26 12:04:29,592 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 12:04:35,902 - AgentLogger - INFO - DONE a fail SFX needed.
+2023-04-26 12:04:35,910 - AgentLogger - INFO - RUNNING TIME IS 3.2666611671447754.
+2023-04-26 12:04:35,911 - AgentLogger - INFO - IS FININSH - False.
+2023-04-26 12:04:35,911 - AgentLogger - INFO - The mean accuracy is 0.0847457627118644.
+2023-04-26 12:04:35,928 - AgentLogger - INFO - The mean latency is 2.9408431529998778.

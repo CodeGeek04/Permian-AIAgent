@@ -1,0 +1,336 @@
+USER_QUERY: 
+add a text '<TEXT_MASK>'
+
+INSTRUCTIONS: 
+Click button 'Text'.
+Click button 'Add Text'.
+Click the input text box.
+Type '<TEXT_MASK>' to this input box.
+Click button 'Media' to get back.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(3) .MediaSidebar-module_mediaIcon_aF-LX').click()
+driver.find_element(By.CSS_SELECTOR, '.Text-module_addTextButtonHighlight_Rlpgt').click()
+driver.find_element(By.CSS_SELECTOR, '.Transformer-module_selectedLayer_wuDY5').click()
+driver.find_element(By.CSS_SELECTOR, '.DraftEditor-editorContainer > .notranslate').send_keys([Keys.BACK_SPACE]*15, '<TEXT_MASK>')
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(1) > .MediaSidebar-module_mediaSidebarIconSubheader_9EpxJ').click()
+
+
+USER_QUERY: 
+change text to color <COLOR_MASK>
+
+INSTRUCTIONS: 
+Click the input text box.
+Click color choose button.
+Convert color <COLOR_MASK> to its hex code.
+Type the hex code to text color hex code input box.
+Click 'Select' button.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.Transformer-module_selectedLayer_wuDY5').click()
+driver.find_element(By.CSS_SELECTOR, '.common-module_controlSectionContainer_7gwIs:nth-child(3) .common-module_smallControlButton_66vuT').click()
+driver.find_element(By.CSS_SELECTOR, '.ColorInput-module_colorInput_u7idt').click()
+color_hex_code = name_to_hex('<COLOR_MASK>')
+driver.find_element(By.CSS_SELECTOR, '.ColorInput-module_colorInput_u7idt').send_keys([Keys.BACK_SPACE]*6, color_hex_code)
+driver.find_element(By.CSS_SELECTOR, '.LayerColorSelector-module_selectButton_xHU7A').click()
+
+
+USER_QUERY: 
+change '<TEXT_MASK>' to color <COLOR_MASK>
+
+INSTRUCTIONS: 
+Click button 'Layers'.
+Click text layer which named '<TEXT_MASK>'.
+Click color choose button.
+Convert color <COLOR_MASK> to its hex code.
+Type the hex code to text color hex code input box.
+Click 'Select' button.
+Click button 'Media' to get back.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(2) > .MediaSidebar-module_mediaSidebarIconSubheader_9EpxJ').click()
+driver.find_elements(By.XPATH, '//*[contains(text(), '<TEXT_MASK>')]')[0].click()
+driver.find_element(By.CSS_SELECTOR, '.common-module_controlSectionContainer_7gwIs:nth-child(3) .common-module_smallControlButton_66vuT').click()
+driver.find_element(By.CSS_SELECTOR, '.ColorInput-module_colorInput_u7idt').click()
+color_hex_code = name_to_hex('<COLOR_MASK>')
+driver.find_element(By.CSS_SELECTOR, '.ColorInput-module_colorInput_u7idt').send_keys([Keys.BACK_SPACE]*6, color_hex_code)
+driver.find_element(By.CSS_SELECTOR, '.LayerColorSelector-module_selectButton_xHU7A').click()
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(1) > .MediaSidebar-module_mediaSidebarIconSubheader_9EpxJ').click()
+
+
+USER_QUERY: 
+change text to '<TEXT_MASK>'
+
+INSTRUCTIONS: 
+Click the input text box.
+Clear the input text box first.
+Type '<TEXT_MASK>' to this input box.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.Transformer-module_selectedLayer_wuDY5').click()
+driver.find_element(By.CSS_SELECTOR, '.DraftEditor-editorContainer > .notranslate').clear()
+driver.find_element(By.CSS_SELECTOR, '.DraftEditor-editorContainer > .notranslate').send_keys('<TEXT_MASK>')
+
+
+USER_QUERY: 
+change text '<TEXT_MASK_1>' to '<TEXT_MASK_2>'
+
+INSTRUCTIONS: 
+Click button 'Layers'.
+Click text layer which named '<TEXT_MASK_1>'.
+Click the input text box.
+Clear the input text box first.
+Type '<TEXT_MASK_2>' to this input box.
+Click button 'Media' to get back.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(2) > .MediaSidebar-module_mediaSidebarIconSubheader_9EpxJ').click()
+driver.find_elements(By.XPATH, '//*[contains(text(), '<TEXT_MASK_1>')]')[0].click()
+driver.find_element(By.CSS_SELECTOR, '.Transformer-module_selectedLayer_wuDY5').click()
+driver.find_element(By.CSS_SELECTOR, '.DraftEditor-editorContainer > .notranslate').clear()
+driver.find_element(By.CSS_SELECTOR, '.DraftEditor-editorContainer > .notranslate').send_keys('<TEXT_MASK_2>')
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(1) > .MediaSidebar-module_mediaSidebarIconSubheader_9EpxJ').click()
+
+
+USER_QUERY:
+make text caption start at <TIME_MASK_1> second and end at <TIME_MASK_2> second
+
+INSTRUCTIONS:
+Click the input text box.
+Click 'Timing' button.
+Click the start time input box.
+Type '<TIME_MASK_1>' to this input box.
+Click the end time input box.
+Type '<TIME_MASK_2>' to this input box.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.Transformer-module_selectedLayer_wuDY5').click()
+driver.find_element(By.CSS_SELECTOR, '.Tabs-module_tab_HQZWB:nth-child(4)').click()
+driver.find_element(By.CSS_SELECTOR, '.ExactInputBox-module_container_8ySEv:nth-child(1) .ExactInputBox-module_containerTimeBox_4sHbQ:nth-child(3) > .ExactInputBox-module_input_ezpNr').click()
+driver.find_element(By.CSS_SELECTOR, '.ExactInputBox-module_container_8ySEv:nth-child(1) .ExactInputBox-module_containerTimeBox_4sHbQ:nth-child(3) > .ExactInputBox-module_input_ezpNr').send_keys('<TIME_MASK_1>')
+driver.find_element(By.CSS_SELECTOR, '.ExactInputBox-module_container_8ySEv:nth-child(2) .ExactInputBox-module_containerTimeBox_4sHbQ:nth-child(3) > .ExactInputBox-module_input_ezpNr').click()
+driver.find_element(By.CSS_SELECTOR, '.ExactInputBox-module_container_8ySEv:nth-child(2) .ExactInputBox-module_containerTimeBox_4sHbQ:nth-child(3) > .ExactInputBox-module_input_ezpNr').send_keys('<TIME_MASK_2>')
+
+
+USER_QUERY:
+make text caption '<TEXT_MASK>' start at <TIME_MASK_1> second and end at <TIME_MASK_2> second
+
+INSTRUCTIONS:
+Click button 'Layers'.
+Click text layer which named '<TEXT_MASK>'.
+Click 'Timing' button.
+Click the start time input box.
+Type '<TIME_MASK_1>' to this input box.
+Click the end time input box.
+Type '<TIME_MASK_2>' to this input box.
+Click button 'Media' to get back.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(2) > .MediaSidebar-module_mediaSidebarIconSubheader_9EpxJ').click()
+driver.find_elements(By.XPATH, '//*[contains(text(), '<TEXT_MASK>')]')[0].click()
+driver.find_element(By.CSS_SELECTOR, '.Tabs-module_tab_HQZWB:nth-child(4)').click()
+driver.find_element(By.CSS_SELECTOR, '.ExactInputBox-module_container_8ySEv:nth-child(1) .ExactInputBox-module_containerTimeBox_4sHbQ:nth-child(3) > .ExactInputBox-module_input_ezpNr').click()
+driver.find_element(By.CSS_SELECTOR, '.ExactInputBox-module_container_8ySEv:nth-child(1) .ExactInputBox-module_containerTimeBox_4sHbQ:nth-child(3) > .ExactInputBox-module_input_ezpNr').send_keys('<TIME_MASK_1>')
+driver.find_element(By.CSS_SELECTOR, '.ExactInputBox-module_container_8ySEv:nth-child(2) .ExactInputBox-module_containerTimeBox_4sHbQ:nth-child(3) > .ExactInputBox-module_input_ezpNr').click()
+driver.find_element(By.CSS_SELECTOR, '.ExactInputBox-module_container_8ySEv:nth-child(2) .ExactInputBox-module_containerTimeBox_4sHbQ:nth-child(3) > .ExactInputBox-module_input_ezpNr').send_keys('<TIME_MASK_2>')
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(1) > .MediaSidebar-module_mediaSidebarIconSubheader_9EpxJ').click()
+
+
+USER_QUERY:
+make text caption last for <TIME_MASK> second
+
+INSTRUCTIONS:
+Click the input text box.
+Click 'Timing' button.
+Get the start time.
+Calculate the end time, it should be start time plus the <TIME_MASK> second duration.
+Click the end time input box.
+Type the end time to this input box.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.Transformer-module_selectedLayer_wuDY5').click()
+driver.find_element(By.CSS_SELECTOR, '.Tabs-module_tab_HQZWB:nth-child(4)').click()
+start_second = int(driver.find_element(By.CSS_SELECTOR, '.ExactInputBox-module_container_8ySEv:nth-child(1) .ExactInputBox-module_containerTimeBox_4sHbQ:nth-child(3) > .ExactInputBox-module_input_ezpNr').text)
+end_second = int(<TIME_MASK>) + start_second
+driver.find_element(By.CSS_SELECTOR, '.ExactInputBox-module_container_8ySEv:nth-child(2) .ExactInputBox-module_containerTimeBox_4sHbQ:nth-child(3) > .ExactInputBox-module_input_ezpNr').click()
+driver.find_element(By.CSS_SELECTOR, '.ExactInputBox-module_container_8ySEv:nth-child(2) .ExactInputBox-module_containerTimeBox_4sHbQ:nth-child(3) > .ExactInputBox-module_input_ezpNr').send_keys(f'{end_second}')
+
+
+USER_QUERY:
+make text caption '<TEXT_MASK>' last for <TIME_MASK> second
+
+INSTRUCTIONS:
+Click button 'Layers'.
+Click text layer which named '<TEXT_MASK>'.
+Click 'Timing' button.
+Get the start time.
+Calculate the end time, it should be start time plus the <TIME_MASK> second duration.
+Click the end time input box.
+Type the end time to this input box.
+Click button 'Media' to get back.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(2) > .MediaSidebar-module_mediaSidebarIconSubheader_9EpxJ').click()
+driver.find_elements(By.XPATH, '//*[contains(text(), '<TEXT_MASK>')]')[0].click()
+driver.find_element(By.CSS_SELECTOR, '.Tabs-module_tab_HQZWB:nth-child(4)').click()
+start_second = int(driver.find_element(By.CSS_SELECTOR, '.ExactInputBox-module_container_8ySEv:nth-child(1) .ExactInputBox-module_containerTimeBox_4sHbQ:nth-child(3) > .ExactInputBox-module_input_ezpNr').text)
+end_second = int(<TIME_MASK>) + start_second
+driver.find_element(By.CSS_SELECTOR, '.ExactInputBox-module_container_8ySEv:nth-child(2) .ExactInputBox-module_containerTimeBox_4sHbQ:nth-child(3) > .ExactInputBox-module_input_ezpNr').click()
+driver.find_element(By.CSS_SELECTOR, '.ExactInputBox-module_container_8ySEv:nth-child(2) .ExactInputBox-module_containerTimeBox_4sHbQ:nth-child(3) > .ExactInputBox-module_input_ezpNr').send_keys(f'{end_second}')
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(1) > .MediaSidebar-module_mediaSidebarIconSubheader_9EpxJ').click()
+
+
+USER_QUERY:
+change text style to <ADJ_MASK>
+
+INSTRUCTIONS: 
+Click the input text box.
+There are three types of text style, bold, italic, underline.
+Click the button corresponding to <ADJ_MASK>.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.Transformer-module_selectedLayer_wuDY5').click()
+dict = {'bold': '1', 'italic': '2', 'underline': '3'}
+driver.find_element(By.CSS_SELECTOR, f'.Text-module_textStyleControlsContainer_kkXjZ > .common-module_smallControlButton_66vuT:nth-child({dict['<ADJ_MASK>']})').click()
+
+
+USER_QUERY:
+remove <ADJ_MASK> text style
+
+INSTRUCTIONS: 
+Click the input text box.
+There are three types of text style, bold, italic, underline.
+Click the button corresponding to <ADJ_MASK>.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.Transformer-module_selectedLayer_wuDY5').click()
+dict = {'bold': '1', 'italic': '2', 'underline': '3'}
+driver.find_element(By.CSS_SELECTOR, f'.Text-module_textStyleControlsContainer_kkXjZ > .common-module_smallControlButton_66vuT:nth-child({dict['<ADJ_MASK>']})').click()
+
+
+USER_QUERY:
+change text '<TEXT_MASK>' style to <ADJ_MASK>
+
+INSTRUCTIONS: 
+Click button 'Layers'.
+Click text layer which named '<TEXT_MASK>'.
+There are three types of text style, bold, italic, underline.
+Click the button corresponding to <ADJ_MASK>.
+Click button 'Media' to get back.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(2) > .MediaSidebar-module_mediaSidebarIconSubheader_9EpxJ').click()
+driver.find_elements(By.XPATH, '//*[contains(text(), '<TEXT_MASK>')]')[0].click()
+dict = {'bold': '1', 'italic': '2', 'underline': '3'}
+driver.find_element(By.CSS_SELECTOR, f'.Text-module_textStyleControlsContainer_kkXjZ > .common-module_smallControlButton_66vuT:nth-child({dict['<ADJ_MASK>']})').click()
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(1) > .MediaSidebar-module_mediaSidebarIconSubheader_9EpxJ').click()
+
+
+USER_QUERY:
+remove <ADJ_MASK> style from '<TEXT_MASK>'
+
+INSTRUCTIONS: 
+Click button 'Layers'.
+Click text layer which named '<TEXT_MASK>'.
+There are three types of text style, bold, italic, underline.
+Click the button corresponding to <ADJ_MASK>.
+Click button 'Media' to get back.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(2) > .MediaSidebar-module_mediaSidebarIconSubheader_9EpxJ').click()
+driver.find_elements(By.XPATH, '//*[contains(text(), '<TEXT_MASK>')]')[0].click()
+dict = {'bold': '1', 'italic': '2', 'underline': '3'}
+driver.find_element(By.CSS_SELECTOR, f'.Text-module_textStyleControlsContainer_kkXjZ > .common-module_smallControlButton_66vuT:nth-child({dict['<ADJ_MASK>']})').click()
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(1) > .MediaSidebar-module_mediaSidebarIconSubheader_9EpxJ').click()
+
+
+USER_QUERY:
+adjust the text size to <NUMBER_MASK>
+
+INSTRUCTIONS:
+Click the input text box.
+Click font size input box.
+Type '<NUMBER_MASK>' into the input box.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.Transformer-module_selectedLayer_wuDY5').click()
+driver.find_element(By.CSS_SELECTOR, '.common-module_dropdownDirectInput_m4-FD').click()
+driver.find_element(By.CSS_SELECTOR, '.common-module_dropdownDirectInput_m4-FD').send_keys('<NUMBER_MASK>')
+
+
+USER_QUERY:
+adjust the caption '<TEXT_MASK>' size to <NUMBER_MASK>
+
+INSTRUCTIONS:
+Click button 'Layers'.
+Click text layer which named '<TEXT_MASK>'.
+Click font size input box.
+Type '<NUMBER_MASK>' into the input box.
+Click button 'Media' to get back.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(2) > .MediaSidebar-module_mediaSidebarIconSubheader_9EpxJ').click()
+driver.find_elements(By.XPATH, '//*[contains(text(), '<TEXT_MASK>')]')[0].click()
+driver.find_element(By.CSS_SELECTOR, '.common-module_dropdownDirectInput_m4-FD').click()
+driver.find_element(By.CSS_SELECTOR, '.common-module_dropdownDirectInput_m4-FD').send_keys('<NUMBER_MASK>')
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(1) > .MediaSidebar-module_mediaSidebarIconSubheader_9EpxJ').click()
+
+
+USER_QUERY:
+increase the caption size or make the text larger
+
+INSTRUCTIONS:
+Click the input text box.
+Get font size.
+new font size = font size + 10
+Click font size input box.
+Type new font size into the input box.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.Transformer-module_selectedLayer_wuDY5').click()
+font_size = int(driver.find_element(By.CSS_SELECTOR, '.common-module_dropdownDirectInput_m4-FD').text)
+new_font_size = font_size + 10
+driver.find_element(By.CSS_SELECTOR, '.common-module_dropdownDirectInput_m4-FD').click()
+driver.find_element(By.CSS_SELECTOR, '.common-module_dropdownDirectInput_m4-FD').send_keys(f'{new_font_size}')
+
+
+USER_QUERY:
+reduce the size of the text or make the caption smaller
+
+INSTRUCTIONS:
+Click the input text box.
+Get font size.
+new font size = font size - 10
+Click font size input box.
+Type new font size into the input box.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.Transformer-module_selectedLayer_wuDY5').click()
+font_size = int(driver.find_element(By.CSS_SELECTOR, '.common-module_dropdownDirectInput_m4-FD').text)
+new_font_size = font_size - 10
+driver.find_element(By.CSS_SELECTOR, '.common-module_dropdownDirectInput_m4-FD').click()
+driver.find_element(By.CSS_SELECTOR, '.common-module_dropdownDirectInput_m4-FD').send_keys(f'{new_font_size}')
+
+
+USER_QUERY: 
+add <ADJ_MASK> sound effect
+
+INSTRUCTIONS: 
+Click button 'Audio'.
+Click 'Sound Effects' tab.
+Click sound effect search box.
+Type '<ADJ_MASK>' to this search box.
+Click 'Search' button.
+Wait 5 seconds for search results.
+Click the first sound effect link.
+Click button 'Media' to get back.
+
+SCRIPTS:
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(8) > .MediaSidebar-module_mediaSidebarIconSubheader_9EpxJ').click()
+driver.find_element(By.CSS_SELECTOR, '.Search-module_tab_057MX:nth-child(2)').click()
+driver.find_element(By.CSS_SELECTOR, '.UploadSearchbar-module_darkThemeSearchBar_RBfE0').click()
+driver.find_element(By.CSS_SELECTOR, '.UploadSearchbar-module_darkThemeSearchBar_RBfE0').send_keys('<ADJ_MASK>')
+driver.find_element(By.CSS_SELECTOR, '.UploadSearchbar-module_goButton_9BUyo').click()
+time.sleep(5)
+driver.find_elements(By.XPATH, '//div[@id=\'mediaSidebarControls\']/div/div/div[2]/div[2]/div[6]')[0].click()
+driver.find_element(By.CSS_SELECTOR, '.MediaSidebar-module_mediaSidebarIcon_cxxy2:nth-child(1) > .MediaSidebar-module_mediaSidebarIconSubheader_9EpxJ').click()

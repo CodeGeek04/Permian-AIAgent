@@ -1,0 +1,830 @@
+def create_new_project(name):
+    """Creates a new project.
+    For example, to create a new project named 'My Vlog', should use: create_new_project('My Vlog')"""
+
+    create_new_project = driver.find_elements(By.CLASS_NAME, "Folder-module_createText_-tw9f")[0]
+    create_new_project.click()
+    driver.implicitly_wait(2)
+
+
+def open_project(name):
+    """Open an existed project.
+    For example, to open a project named 'My Vlog', should use: open_project('My Vlog')"""
+
+    project_button = select_project_button(name)
+    project_button.click()
+    time.sleep(15)
+
+
+def upload_video(local_dir):
+    """Upload a video from given local directory.
+    For example, to upload a video stored in '/User/Download/xxx.mp4', should use: upload_video('/User/Download/xxx.mp4')"""
+
+    upload_button = driver.find_elements(By.CLASS_NAME, "Upload-module_uploadButton_5vs7h")[0]
+    upload_button.send_keys(f"{local_dir}")
+    driver.implicitly_wait(2)
+
+
+def add_caption(caption_text):
+    """Add the given caption to the video.
+    For example, to add 'Coffee Time', should use: add_caption('Coffee Time')"""
+    
+    try:
+        text_tab_button = get_elements_by_text("Text")[1]
+        text_tab_button.click()
+
+        add_text_button_sub = get_elements_by_text("Add Text")[0]
+        add_text_button = add_text_button_sub.find_elements(By.XPATH, "..")[0]
+        add_text_button.click()
+
+        caption_element = get_elements_by_text("Sample text")[1]
+        caption_element.send_keys([Keys.BACK_SPACE]*15, caption_text)
+
+        global text_edit_tab, text_animate_tab, text_effects_tab, text_timing_tab
+
+        text_edit_tab = get_elements_by_class("Tabs-module_tab_HQZWB")[1]
+        text_animate_tab = get_elements_by_class("Tabs-module_tab_HQZWB")[2] 
+        text_effects_tab = get_elements_by_class("Tabs-module_tab_HQZWB")[3]
+        text_timing_tab = get_elements_by_class("Tabs-module_tab_HQZWB")[4]
+
+    except Exception as e:
+        print(e)
+        close_driver()
+
+
+def change_caption_text(caption_text, timestamp):
+    """Change caption's text given timestamp.
+    For example, to change the caption content at 18 seconds to 'Happy Life', should use: change_caption_text('Happy Life', 18)"""
+    
+    layers_button = driver.find_elements(By.XPATH, "//*[contains(text(), 'Layers')]")[0]
+    layers_button.click()
+
+    layers = get_elements_by_class("common-module_controlSectionRow_u6iL8")
+
+    fit_to_screen = get_elements_by_text("Fit")[0]
+    fit_to_screen.click()
+
+    gap_pixels = 15
+    multiplier_pixels = get_elements_by_class("TimeLabels-module_tick_fvLlX")[0].size['width']
+    factor = int(get_elements_by_class("TimeLabels-module_tick_fvLlX")[1].text[-1])
+
+    pixels = gap_pixels + (timestamp) * (multiplier_pixels / factor)
+
+    slider = get_elements_by_class("Seeker-module_seekerContainer_HkUsQ")[0]
+    driver.execute_script(f"arguments[0].style.transform = 'translateX({pixels}px)';", slider)
+    slider.click()
+
+    elements = get_elements_by_class("Transformer-module_transformer_AgKxF")
+    for ele in elements:
+        ## can only click visible elements
+        try:
+            ele.click()
+
+            edit_tab = get_elements_by_class("Tabs-module_tab_HQZWB")[1]
+            edit_tab.click()
+
+            if get_elements_by_class("common-module_controlSectionTitle_eK-7P")[0].text == "Font":
+                actions.move_to_element(ele).click().send_keys([Keys.BACK_SPACE]*100, caption_text).perform()
+        except:
+            pass
+
+    layers_button = driver.find_elements(By.XPATH, "//*[contains(text(), 'Layers')]")[0]
+    layers_button.click()
+
+
+def change_caption_time(start_time, end_time):
+    """Change the caption's last time or duration given start time and end time.
+    For example, to change caption starting from 5 second and ending at 10 second, should use: change_caption_time(5, 10)"""
+
+    text_timing_tab.click()
+
+    start_mins_box = get_elements_by_class("ExactInputBox-module_containerTimeBox_4sHbQ")[0]
+    start_seconds_box = get_elements_by_class("ExactInputBox-module_containerTimeBox_4sHbQ")[1]
+    end_mins_box = get_elements_by_class("ExactInputBox-module_containerTimeBox_4sHbQ")[3]
+    end_seconds_box = get_elements_by_class("ExactInputBox-module_containerTimeBox_4sHbQ")[4]
+
+    default_end_seconds = int(end_seconds_box.text)
+    end_keys = end_time - default_end_seconds
+    default_start_seconds = int(start_seconds_box.text)
+    start_keys = start_time - default_start_seconds
+
+    end_seconds_box.click()
+    actions.send_keys([Keys.ARROW_UP]*end_keys).perform()
+
+    start_seconds_box.click()
+    actions.send_keys([Keys.ARROW_UP]*start_keys).perform()
+
+    text_edit_tab.click()
+
+
+def change_caption_style(style_name):
+    """Change the caption's style.
+    For example, to change the style of the caption to 'italic', should use: change_caption_style('italic')"""
+
+    text_tab_button = get_elements_by_text("Text")[1]
+    text_tab_button.click()
+
+    bold_button = get_elements_by_class("common-module_smallControlButton_66vuT")[1]
+    italic_button = get_elements_by_class("common-module_smallControlButton_66vuT")[2]
+    underline_button = get_elements_by_class("common-module_smallControlButton_66vuT")[3]
+
+    if style_name == 'bold':
+        bold_button.click()
+        
+    if style_name == 'italic':
+        italic_button.click()
+        
+    if style_name == 'underline':
+        underline_button.click()
+
+
+def change_caption_color(color):
+    """Change the caption's color. Color must be provided in hex code.
+    For example, to change caption's color to red, should use: change_caption_color('FF0000')"""
+
+    text_tab_button = get_elements_by_text("Text")[1]
+    text_tab_button.click()
+
+    color_box_button = get_elements_by_class("common-module_smallControlButton_66vuT")[7]
+    color_box_button.click()
+
+    color_box_text_element = get_elements_by_class("ColorInput-module_colorInput_u7idt")[0]
+    color_box_text_element.send_keys([Keys.BACK_SPACE]*10, color, Keys.ENTER)
+
+    continue_button = get_elements_by_class("LayerColorSelector-module_bottom_XEq1i")[0]
+    continue_button.click()
+
+
+def change_caption_font_size(font_size):
+    """Change the caption's font size.
+    For example, to change the caption size to 64, should use: change_caption_font_size(64)"""
+    
+    text_tab_button = get_elements_by_text("Text")[1]
+    text_tab_button.click()
+
+    font_size_button = get_elements_by_class("common-module_dropdownDirectInput_m4-FD")[0]
+    font_size_button.click()
+    font_size_button.send_keys(Keys.BACK_SPACE, Keys.BACK_SPACE, font_size)
+
+    text_edit_tab.click()
+
+
+def change_caption_font_type(font):
+    """Change the caption's font type.
+    For example, to change the caption font to 'Times New Roman', should use: change_caption_font_type('Times New Roman')"""
+
+    text_tab_button = get_elements_by_text("Text")[1]
+    text_tab_button.click()
+
+    try:
+        font_type_button = get_elements_by_text("Impact")[0].click()
+        font_type_button.click()
+        font_type = get_elements_by_text(font)[0]
+        font_type.click()
+    except:
+        text_edit_tab.click()
+        pass
+
+
+def change_caption_outline_color(color):
+    """Change the caption's outline color. Color must be provided in hex code.
+    For example, to change caption outline color to red, should use: change_caption_outline_color('FF0000')"""
+    
+    text_tab_button = get_elements_by_text("Text")[1]
+    text_tab_button.click()
+
+    text_outline_button = get_elements_by_class("common-module_smallControlButton_66vuT")[8]
+    text_outline_button.click()
+
+    color_box_text_element = get_elements_by_class("ColorInput-module_colorInput_u7idt")[0]
+    color_box_text_element.send_keys([Keys.BACK_SPACE]*15, color, Keys.ENTER)
+
+    continue_button = get_elements_by_class("LayerColorSelector-module_bottom_XEq1i")[0]
+    continue_button.click()
+
+
+def change_caption_background_color(color):
+    """Change the caption's background color. Color must be provided in hex code.
+    For example, to change caption background color to blue, should use: change_caption_background_color('0000FF')"""
+
+    text_tab_button = get_elements_by_text("Text")[1]
+    text_tab_button.click()
+
+    text_back_button = get_elements_by_class("common-module_smallControlButton_66vuT")[9]
+    text_back_button.click()
+
+    color_box_text_element = get_elements_by_class("ColorInput-module_colorInput_u7idt")[0]
+    color_box_text_element.send_keys([Keys.BACK_SPACE]*15, color, Keys.ENTER)
+
+    continue_button = get_elements_by_class("LayerColorSelector-module_bottom_XEq1i")[0]
+    continue_button.click()
+
+
+def change_caption_opacity(opacity):
+    """Change the caption's opacity.
+    For example, to change the caption opacity to 70, should use: change_caption_opacity(70)"""
+
+    text_tab_button = get_elements_by_text("Text")[1]
+    text_tab_button.click()
+
+    opactiy_dec_button = get_elements_by_class("common-module_incrementDecrementButton_gr5Cg")[0]
+
+    if opacity != 100:
+        opacity_decrease = (100 - opacity) // 10
+    
+        for i in range(opacity_decrease):
+            opactiy_dec_button.click()
+
+    text_edit_tab.click()
+
+ 
+def change_caption_position(x_pos, y_pos):
+    """Change the caption's position.
+    For example, to move the caption down by 4 and right by 6, should use: change_caption_position(6, -4)"""
+
+    text_tab_button = get_elements_by_text("Text")[1]
+    text_tab_button.click()
+
+    x_pos_box = driver.find_elements(By.CSS_SELECTOR,"input[data-testid='layer-position-control__x-input']")[0]
+    x_pos_box.send_keys([Keys.BACK_SPACE]*10, x_pos)
+
+    y_pos_box = driver.find_elements(By.CSS_SELECTOR,"input[data-testid='layer-position-control__y-input']")[0]
+    y_pos_box.send_keys([Keys.BACK_SPACE]*10, y_pos)
+
+    text_edit_tab.click()
+
+
+def delete_row(layer_id):
+    """Delete any layer row.
+    For example, to delete the 3rd row, should use: delete_row(3)"""
+
+    layers_button = get_elements_by_text("Layers")[0]
+    layers_button.click()
+
+    layers = get_elements_by_class("TimelineRows-module_timelineRowText_yHt8c")
+    layer_objects = get_elements_by_class("Track-module_container_mph21")
+
+    layer_elements = get_elements_by_class("common-module_controlSectionRow_u6iL8")
+
+    del_layer_element = layers[layer_id - 1]
+    actions.context_click(del_layer_element).perform()
+
+    del_row_button = get_elements_by_text("Delete row")[0]
+    del_row_button.click()
+
+    del_confirm_button = get_elements_by_class("OverlayContent-module_primaryButton_FZkdT")[0]
+    del_confirm_button.click()
+
+
+def add_row_above(layer_id):
+    """Add empty row above any layer.
+    For example, to add an empty row above the 2nd layer, should use: add_row_above(2)"""
+
+    layers_button = get_elements_by_text("Layers")[0]
+    layers_button.click()
+
+    layers = get_elements_by_class("TimelineRows-module_timelineRowText_yHt8c")
+    layer_objects = get_elements_by_class("Track-module_container_mph21")
+
+    add_row_layer_element= layers[layer_id - 1]
+    actions.context_click(add_row_layer_element).perform()
+    add_row_button = get_elements_by_text("Add row")[0]
+    add_row_button.click()
+
+
+def detach_audio():
+    """Detach audio from main video.
+    For example, to detach audio from main video, should use: detach_audio()"""
+
+    layers_button = get_elements_by_text("Layers")[0]
+    layers_button.click()
+
+    layers = get_elements_by_class("TimelineRows-module_timelineRowText_yHt8c")
+    layer_objects = get_elements_by_class("Track-module_container_mph21")
+
+    actions.context_click(layer_objects[0]).perform()
+    detach_button = get_elements_by_text("Detach")[1]
+    detach_button.click()
+
+
+def show_layer_info():
+    """Show all layers information.
+    Should use: show_layer_info()"""
+
+    layers_button = get_elements_by_text("Layers")[0]
+    layers_button.click()
+
+    layer_elements = get_elements_by_class("common-module_controlSectionRow_u6iL8")
+
+    for layer in layer_elements:
+        print(layer.text)
+
+
+def delete_layer(layer_id):
+    """Delete any layer.
+    For example, to delete the 3rd layer, should use: delete_layer(3)"""
+    
+    del_layer_button = get_elements_by_class("Controls-module_layerControlRight_p7h1D")[layer_id - 1]
+    del_layer_button.click()
+
+
+def trim_video(start_time, end_time):
+    """Trim the video clip given start time and end time.
+    For example, to trim the video starting from 2 and ending at 6, should use: trim_video(2, 6)"""
+
+    layers_button = driver.find_elements(By.XPATH, "//*[contains(text(), 'Layers')]")[0]
+    layers_button.click()
+
+    video_layers = {}
+    idx = 0 
+    layers = get_elements_by_class("common-module_controlSectionRow_u6iL8")
+
+    for layer in layers:
+        layer.click()
+        edit_tab = get_elements_by_class("Tabs-module_tab_HQZWB")[1]
+        edit_tab.click()
+        if get_elements_by_class("common-module_controlSectionTitle_eK-7P")[0].text == "Video":
+            video_layers[idx]  = layer
+            idx += 1  
+            
+    l = len(video_layers) - 1 
+    start_sec = int(str(start_timestamp).split(".")[0])
+    start_mili_sec = int(str(start_timestamp).split(".")[1])
+
+    end_sec = int(str(end_timestamp).split(".")[0])
+    end_mili_sec = int(str(end_timestamp).split(".")[1])*10
+    for i in range(len(video_layers)):
+        video_layers[l - i].click()
+    
+        trim_button = get_elements_by_text("Trim")[0]
+        trim_button.click()
+        
+        layer_start_sec = get_elements_by_class("ExactInputBox-module_input_ezpNr")[1].get_attribute("value")
+        layer_start_mili = get_elements_by_class("ExactInputBox-module_input_ezpNr")[2].get_attribute("value")
+        layer_start = float(f"{int(layer_start_sec)}.{int(layer_start_mili)}")
+        
+        layer_end_sec = get_elements_by_class("ExactInputBox-module_input_ezpNr")[4].get_attribute("value")
+        layer_end_mili = get_elements_by_class("ExactInputBox-module_input_ezpNr")[5].get_attribute("value")
+        layer_end = float(f"{int(layer_end_sec)}.{int(layer_end_mili)}")
+        
+        if start_timestamp > layer_start:
+            get_elements_by_class("ExactInputBox-module_input_ezpNr")[1].send_keys(start_sec)
+            get_elements_by_class("ExactInputBox-module_input_ezpNr")[2].send_keys(start_mili_sec)
+        elif end_timestamp < layer_end: 
+            get_elements_by_class("ExactInputBox-module_input_ezpNr")[4].send_keys(end_sec)
+            get_elements_by_class("ExactInputBox-module_input_ezpNr")[5].send_keys(end_mili_sec)
+
+        trim_button = get_elements_by_text("Trim")[-1]
+        trim_button.click()
+        
+    video_layers[len(video_layers) -1 ].click()
+    time_tab = get_elements_by_class("Tabs-module_tab_HQZWB")[4]
+    time_tab.click()
+
+    time_buttons = get_elements_by_class("ExactInputBox-module_containerTimeBox_4sHbQ")
+            
+    end_time_sec = int(time_buttons[4].text)
+    end_time_mili = int(time_buttons[5].text)
+
+    layer_end_time = float(f"{end_time_sec}.{end_time_mili}")
+
+    for i in range(1, len(video_layers)):
+        video_layers[l - i].click()
+        time_tab = get_elements_by_class("Tabs-module_tab_HQZWB")[4]
+        time_tab.click()
+        time_buttons = get_elements_by_class("ExactInputBox-module_containerTimeBox_4sHbQ")
+        
+        start_time_sec = int(time_buttons[1].text)
+        start_time_mili = int(time_buttons[2].text)
+
+        start_time = float(f"{start_time_sec}.{start_time_mili}")
+        end_time_sec = int(time_buttons[4].text)
+        end_time_mili = int(time_buttons[5].text)
+
+        end_time= float(f"{end_time_sec}.{end_time_mili}")
+        
+        layer_length = end_time - start_time 
+        layer_start_time = layer_end_time
+        layer_end_time = layer_start_time + layer_length
+
+        fit_to_screen = get_elements_by_text("Fit")[0]
+        fit_to_screen.click()
+
+        gap_pixels = 15
+        multiplier_pixels = get_elements_by_class("TimeLabels-module_tick_fvLlX")[0].size['width']
+        factor = int(get_elements_by_class("TimeLabels-module_tick_fvLlX")[1].text[-1])
+
+        pixels = gap_pixels + (layer_start_time)*(multiplier_pixels/ factor)
+
+        slider = get_elements_by_class("Seeker-module_seekerContainer_HkUsQ")[0]
+        driver.execute_script(f"arguments[0].style.transform = 'translateX({pixels}px)';", slider)
+        slider.click()
+        
+        start_set = get_elements_by_text("Set to")[0]
+        start_set.click()  
+
+        fit_to_screen = get_elements_by_text("Fit")[0]
+        fit_to_screen.click()
+
+        gap_pixels = 15
+        multiplier_pixels = get_elements_by_class("TimeLabels-module_tick_fvLlX")[0].size['width']
+        factor = int(get_elements_by_class("TimeLabels-module_tick_fvLlX")[1].text[-1])
+
+        pixels = gap_pixels + (layer_end_time)*(multiplier_pixels/ factor)
+
+        slider = get_elements_by_class("Seeker-module_seekerContainer_HkUsQ")[0]
+        driver.execute_script(f"arguments[0].style.transform = 'translateX({pixels}px)';", slider)
+        slider.click()
+        
+        end_set = get_elements_by_text("Set to")[1]
+        end_set.click()
+        
+    remaining_layers = {}
+    idx = 0 
+    layers = get_elements_by_class("common-module_controlSectionRow_u6iL8")
+
+    for layer in layers:
+        layer.click()
+        edit_tab = get_elements_by_class("Tabs-module_tab_HQZWB")[1]
+        edit_tab.click()
+        if get_elements_by_class("common-module_controlSectionTitle_eK-7P")[0].text != "Video":
+            remaining_layers[idx]  = layer
+            idx += 1  
+            
+    for i in range(len(remaining_layers)):
+        remaining_layers[i].click()
+        time_tab = get_elements_by_class("Tabs-module_tab_HQZWB")[4]
+        time_tab.click()
+        time_buttons = get_elements_by_class("ExactInputBox-module_containerTimeBox_4sHbQ")
+        
+        start_time_sec = int(time_buttons[1].text)
+        start_time_mili = int(time_buttons[2].text)
+
+        start_time = float(f"{start_time_sec}.{start_time_mili}")
+        end_time_sec = int(time_buttons[4].text)
+        end_time_mili = int(time_buttons[5].text)
+
+        end_time= float(f"{end_time_sec}.{end_time_mili}")
+        
+        # elements on left of start_timestamp 
+        if start_time < start_timestamp:
+            fit_to_screen = get_elements_by_text("Fit")[0]
+            fit_to_screen.click()
+
+            gap_pixels = 15
+            multiplier_pixels = get_elements_by_class("TimeLabels-module_tick_fvLlX")[0].size['width']
+            factor = int(get_elements_by_class("TimeLabels-module_tick_fvLlX")[1].text[-1])
+
+            pixels = gap_pixels + (end_time - start_timestamp)*(multiplier_pixels/ factor)
+
+            slider = get_elements_by_class("Seeker-module_seekerContainer_HkUsQ")[0]
+            driver.execute_script(f"arguments[0].style.transform = 'translateX({pixels}px)';", slider)
+            slider.click()
+            end_set = get_elements_by_text("Set to")[1]
+            end_set.click()
+            break
+            time.sleep(WAIT_TIME)
+            
+        ## elements on right of end_timestamp
+        elif end_time > end_timestamp:
+            fit_to_screen = get_elements_by_text("Fit")[0]
+            fit_to_screen.click()
+
+            gap_pixels = 15
+            multiplier_pixels = get_elements_by_class("TimeLabels-module_tick_fvLlX")[0].size['width']
+            factor = int(get_elements_by_class("TimeLabels-module_tick_fvLlX")[1].text[-1])
+
+            pixels = gap_pixels + (start_time -start_timestamp)*(multiplier_pixels/ factor)
+
+            slider = get_elements_by_class("Seeker-module_seekerContainer_HkUsQ")[0]
+            driver.execute_script(f"arguments[0].style.transform = 'translateX({pixels}px)';", slider)
+            slider.click()
+
+            start_set = get_elements_by_text("Set to")[0]
+            start_set.click()  
+
+            fit_to_screen = get_elements_by_text("Fit")[0]
+            fit_to_screen.click()
+
+            gap_pixels = 15
+            multiplier_pixels = get_elements_by_class("TimeLabels-module_tick_fvLlX")[0].size['width']
+            factor = int(get_elements_by_class("TimeLabels-module_tick_fvLlX")[1].text[-1])
+
+            pixels = gap_pixels + (end_timestamp - start_timestamp)*(multiplier_pixels/ factor)
+
+            slider = get_elements_by_class("Seeker-module_seekerContainer_HkUsQ")[0]
+            driver.execute_script(f"arguments[0].style.transform = 'translateX({pixels}px)';", slider)
+            slider.click()
+
+            end_set = get_elements_by_text("Set to")[1]
+            end_set.click()
+        ## remaining elements
+        else:
+            fit_to_screen = get_elements_by_text("Fit")[0]
+            fit_to_screen.click()
+
+            gap_pixels = 15
+            multiplier_pixels = get_elements_by_class("TimeLabels-module_tick_fvLlX")[0].size['width']
+            factor = int(get_elements_by_class("TimeLabels-module_tick_fvLlX")[1].text[-1])
+
+            pixels = gap_pixels + (start_time -start_timestamp)*(multiplier_pixels/ factor)
+
+            slider = get_elements_by_class("Seeker-module_seekerContainer_HkUsQ")[0]
+            driver.execute_script(f"arguments[0].style.transform = 'translateX({pixels}px)';", slider)
+            slider.click()
+
+            start_set = get_elements_by_text("Set to")[0]
+            start_set.click()  
+
+            fit_to_screen = get_elements_by_text("Fit")[0]
+            fit_to_screen.click()
+
+            gap_pixels = 15
+            multiplier_pixels = get_elements_by_class("TimeLabels-module_tick_fvLlX")[0].size['width']
+            factor = int(get_elements_by_class("TimeLabels-module_tick_fvLlX")[1].text[-1])
+
+            pixels = gap_pixels + (end_time -start_timestamp)*(multiplier_pixels/ factor)
+
+            slider = get_elements_by_class("Seeker-module_seekerContainer_HkUsQ")[0]
+            driver.execute_script(f"arguments[0].style.transform = 'translateX({pixels}px)';", slider)
+            slider.click()
+
+            end_set = get_elements_by_text("Set to")[1]
+            end_set.click()
+
+
+def add_audio(audio_path, timestamp):
+    """Add audio clip at given timestamp with audio path.
+    For example, to add an audio file '/User/Downloads/music.mp3' at 12 second, should use: add_audio('/User/Downloads/music.mp3', 12)"""
+
+    layers_button = driver.find_elements(By.XPATH, "//*[contains(text(), 'Layers')]")[0]
+    layers_button.click()
+
+    pixels = 15 + (timestamp)*20
+    slider = get_elements_by_class("Seeker-module_seekerContainer_HkUsQ")[0]
+    driver.execute_script(f"arguments[0].style.transform = 'translateX({pixels}px)';", slider)
+    slider.click()
+
+    audio_tab_button = driver.find_elements(By.XPATH, "//*[contains(text(), 'Audio')]")[0]
+    audio_tab_button.click()
+
+    upload_button = get_elements_by_class("Upload-module_uploadButton_5vs7h")[0]
+    upload_button.send_keys(f"{audio_path}")
+
+
+def change_volume(volume):
+    """Change the video's volume from 0% to 200%.
+    For example, to update the video volume to 80%, should use: change_volume(80)
+    """
+
+    layers_button = driver.find_elements(By.XPATH, "//*[contains(text(), 'Layers')]")[0]
+    layers_button.click()
+
+    audio_layer = get_elements_by_class("common-module_controlSectionRow_u6iL8")[0]
+    audio_layer.click()
+
+    edit_tab = get_elements_by_text("edit")[1]
+    edit_tab.click()
+
+    volume_slider = get_elements_by_class("common-module_controlSlider_d0JZw")[0]
+    driver.execute_script(f"arguments[0].value = '{volume/100}';", volume_slider)
+    driver.execute_script(f"arguments[0].value = '{volume/100}';", volume_slider)
+
+
+def add_image(image_location, start_time, end_time):
+    """Add an image banner at given start and end time with audio path.
+    For example, to add an image file '/User/Downloads/pic.jpg' at 7 second, should use: add_image('/User/Downloads/pic.jpg', 7)"""
+    
+    time.sleep(WAIT_TIME)
+    layers_button = get_elements_by_text('Layers')[0]
+    layers_button.click()
+
+    fit_to_screen = get_elements_by_text("Fit")[0]
+    fit_to_screen.click()
+
+    gap_pixels = 15
+    multiplier_pixels = get_elements_by_class("TimeLabels-module_tick_fvLlX")[0].size['width']
+    factor = int(get_elements_by_class("TimeLabels-module_tick_fvLlX")[1].text[-1])
+
+    pixels = gap_pixels + (start_timestamp)*(multiplier_pixels/ factor)
+
+    slider = get_elements_by_class("Seeker-module_seekerContainer_HkUsQ")[0]
+    driver.execute_script(f"arguments[0].style.transform = 'translateX({pixels}px)';", slider)
+    slider.click()
+
+    media_tab = get_elements_by_text("Media")[0]
+    media_tab.click()
+
+    add_media = get_elements_by_class("CloudMediaLibraryTile-module_addContainer_Mppgd")[0]
+    add_media.click()
+
+    upload_button = get_elements_by_class("Upload-module_uploadButton_5vs7h")[0]
+    upload_button.send_keys(image_location)
+
+    image_media = get_elements_by_class("CloudMediaLibraryTile-module_container_kssdy")[1]
+    image_media.click()
+    layers_button = driver.find_elements(By.XPATH, "//*[contains(text(), 'Layers')]")[0]
+    layers_button.click()
+
+    image_layer = get_elements_by_class("common-module_controlSectionRow_u6iL8")[0]
+    image_layer.click()
+
+    edit_tab = get_elements_by_text("edit")[1]
+    edit_tab.click()
+
+    zoom_slider = get_elements_by_class("common-module_controlSlider_d0JZw")[0]
+    actions.move_to_element(zoom_slider).click_and_hold()
+    actions.move_by_offset(0, 0).perform()
+    actions.release().perform()
+
+    gap_pixels = 15
+    multiplier_pixels = get_elements_by_class("TimeLabels-module_tick_fvLlX")[0].size['width']
+    factor = int(get_elements_by_class("TimeLabels-module_tick_fvLlX")[1].text[-1])
+
+    pixels = gap_pixels + (end_timestamp)*(multiplier_pixels/ factor)
+
+    slider = get_elements_by_class("Seeker-module_seekerContainer_HkUsQ")[0]
+    driver.execute_script(f"arguments[0].style.transform = 'translateX({pixels}px)';", slider)
+    slider.click()
+
+    time_tab = get_elements_by_class("Tabs-module_tab_HQZWB")[4]
+    time_tab.click()
+    time.sleep(WAIT_TIME)
+    end_set = get_elements_by_text("Set to")[1]
+    end_set.click()
+
+
+def zoom_image(zoom_percentage):
+    """Zoom in and zoom out the image banner with a range of 0% to 200%.
+    For example, to zoom the image to 120% of its original size, should use: zoom_image(120)
+    """
+
+    time.sleep(WAIT_TIME)
+    layers_button = get_elements_by_text('Layers')[0]
+    layers_button.click()
+
+    fit_to_screen = get_elements_by_text("Fit")[0]
+    fit_to_screen.click()
+
+    media_tab = get_elements_by_text("Media")[0]
+    media_tab.click()
+
+    image_media = get_elements_by_class("CloudMediaLibraryTile-module_container_kssdy")[1]
+    image_media.click()
+    layers_button = driver.find_elements(By.XPATH, "//*[contains(text(), 'Layers')]")[0]
+    layers_button.click()
+
+    image_layer = get_elements_by_class("common-module_controlSectionRow_u6iL8")[0]
+    image_layer.click()
+
+    edit_tab = get_elements_by_text("edit")[1]
+    edit_tab.click()
+
+    zoom_slider = get_elements_by_class("common-module_controlSlider_d0JZw")[0]
+    slider_range = zoom_slider.size["width"]
+    zoom_pixels = (zoom_percentage - 100)* int(slider_range/2) / 100
+
+    actions.move_to_element(zoom_slider).click_and_hold()
+    actions.move_by_offset(zoom_pixels, 0).perform()
+    actions.release().perform()
+
+
+def add_transition(timestamp, transition, speed):
+    """Add transition to given timestamp, and set speed of transition to slow, default and fast.
+    If speed is not mentioned, should set speed = 'default'.
+    For example, to add a 'drop' transition with fast speed at 10 sec, should use: add_transition(10, 'drop', 'fast')"""
+
+    time.sleep(WAIT_TIME)  
+    layers_button = driver.find_elements(By.XPATH, "//*[contains(text(), 'Layers')]")[0]
+    layers_button.click()
+
+    video_layer = layers = get_elements_by_class("common-module_controlSectionRow_u6iL8")[-1]
+    video_layer.click() 
+    fit_to_screen = get_elements_by_text("Fit")[0]
+    fit_to_screen.click()
+
+    gap_pixels = 15
+    multiplier_pixels = get_elements_by_class("TimeLabels-module_tick_fvLlX")[0].size['width']
+    factor = int(get_elements_by_class("TimeLabels-module_tick_fvLlX")[1].text[-1])
+
+    pixels = gap_pixels + (timestamp)*(multiplier_pixels/ factor)
+
+    slider = get_elements_by_class("Seeker-module_seekerContainer_HkUsQ")[0]
+    driver.execute_script(f"arguments[0].style.transform = 'translateX({pixels}px)';", slider)
+    slider.click()
+
+    layer_objects = get_elements_by_class("Track-module_container_mph21")
+    layer_objects[0].click()
+
+    split_button = get_elements_by_text("Split")[1]
+    split_button.click()
+
+    transitions_button = get_elements_by_text("transitions")[0]
+    transitions_button.click()
+
+    transitions_dict = {}
+    sub_transitions_elements = get_elements_by_class("TransitionControls-module_transitionRow_RsLG0")
+    for elements in sub_transitions_elements:
+        transitions_elements = elements.find_elements( By.TAG_NAME , "div")
+        for i in range(0,4,2):
+            transitions_dict[transitions_elements[i].text.lower()] = transitions_elements[i]
+
+    try:
+        transition_selection = transitions_dict[transition]
+        transition_selection.click()
+    except:
+        print("select any of these transitions", list(transitions_dict.keys()))
+
+    outro_button = get_elements_by_text("Outro")[0].find_elements(By.XPATH, "..")[0]
+    outro_button.click()
+
+    slow_button = get_elements_by_text("Slow")[0].find_elements(By.XPATH, "..")[0]
+    default_button = get_elements_by_text("Default")[0].find_elements(By.XPATH, "..")[0]
+    fast_button = get_elements_by_text("Fast")[0].find_elements(By.XPATH, "..")[0]
+
+    if speed == "fast":
+        fast_button.click()
+    elif speed == "slow":
+        slow_button.click()
+    else:
+        default_button.click()
+
+    layers_button = driver.find_elements(By.XPATH, "//*[contains(text(), 'Layers')]")[0]
+    layers_button.click()
+
+
+def export_video(video_end_time):
+    """Export the whole video given ending time.
+    For example, to export or finish the video of 20 seconds in length, should use: export_video(20)"""
+
+    layers_button = driver.find_elements(By.XPATH, "//*[contains(text(), 'Layers')]")[0]
+    layers_button.click()
+
+    video_element = get_elements_by_class("common-module_controlSectionRow_u6iL8")[-1]
+    video_element.click()
+
+    time_tab = get_elements_by_class("Tabs-module_tab_HQZWB")[4]
+    time_tab.click()
+
+    time_buttons = get_elements_by_class("ExactInputBox-module_containerTimeBox_4sHbQ")
+
+    end_time = int(time_buttons[3].text)*60 + int(time_buttons[4].text)
+
+    end_seconds_box = get_elements_by_class("ExactInputBox-module_containerTimeBox_4sHbQ")[4]
+    end_keys = end_time - video_end_time
+    if end_keys> 0 :
+        end_seconds_box.click()
+        time.sleep(WAIT_TIME)
+        actions.send_keys([Keys.ARROW_DOWN]*end_keys).perform()
+        
+    export_button = get_elements_by_text("Export")[0]
+    export_button.click()
+
+    export_as_mp4 = get_elements_by_text("Export")[2]
+    export_as_mp4.click()
+
+    time.sleep(WAIT_TIME)
+    export_url = driver.current_url
+    print(export_url)
+
+
+def caption_spelling_correction(timestamp):
+    """Correct the caption text at timestamp.
+    For example, to correct the caption at 27 sec, should use: caption_spelling_correction(27)"""
+    
+    pixels = timestamp * 30
+    layers_button = driver.find_elements(By.XPATH, "//*[contains(text(), 'Layers')]")[0]
+    layers_button.click()
+    layers = get_elements_by_class("common-module_controlSectionRow_u6iL8")
+
+    for layer in layers:
+        layer.click()
+        
+        if get_elements_by_class("Text-module_textStyleControlsContainer_kkXjZ") == []:
+            pass
+        else:
+            time_tab = get_elements_by_class("Tabs-module_tab_HQZWB")[4]
+            time_tab.click()
+
+            time_buttons = get_elements_by_class("ExactInputBox-module_containerTimeBox_4sHbQ")
+
+            start_time = int(time_buttons[0].text)* 60 + int(time_buttons[1].text)
+            end_time = int(time_buttons[3].text)*60 + int(time_buttons[4].text)
+
+            if timestamp >= start_time and timestamp <= end_time:
+                time.sleep(WAIT_TIME)
+
+                slider = get_elements_by_class("Seeker-module_seekerContainer_HkUsQ")[0]
+                driver.execute_script(f"arguments[0].style.transform = 'translateX({pixels}px)';", slider)
+                slider.click()
+
+                caption_text_element = get_elements_by_text(layer.text.split(" ")[0])[3]
+                caption_text = get_correct_caption(layer.text)
+                
+                print("Original Text = ", layer.text)
+                print("Updated Text = ",caption_text)
+
+                caption_text_element.send_keys([Keys.BACK_SPACE]*100, caption_text)
+                break
+
+            get_elements_by_class("Tabs-module_tab_HQZWB")[1].click()

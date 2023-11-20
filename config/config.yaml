@@ -1,0 +1,9 @@
+OPENAI_API_KEY: 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 # change to your api key
+QDRANT_HOST: https://54e19a47-5653-4602-9566-0c6287c3d79e.us-east-1-0.aws.cloud.qdrant.io
+QDRANT_API_KEY: zdYVw7VdKmH7E6ntB-G0rDROXEKoqA58kUSs-q1mYal3WB-ZMWlMBA
+PINECONE_API_KEY: a1323d8a-6f19-47b8-abf0-6e1450c6f965
+PINECONE_HOST: us-east-1-aws
+
+KAPWING_URL: https://www.kapwing.com/folder/6420f7dc1e1f0608451836c4 # change to your kapwing personal page url
+KAPWING_PROJECT_NAME: Caption Test Project # change to your kapwing project name
+USER_DATA_DIR: /Users/liujiarun/user_data # change to your chromedriver path which logged in kapwing

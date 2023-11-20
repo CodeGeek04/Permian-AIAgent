@@ -1,0 +1,12 @@
+MODEL_NAME: gpt-4
+TEMPERATURE: 0
+OPENAI_API_KEY: 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
+
+MAIN_URL: https://www.instantly.ai
+USER_DATA_DIR: /Users/liujiarun/user_data
+WEBSITE_USERNAME: ali@alchemic.ca
+WEBSITE_PASSWORD: founders@letsvidt.com
+
+# PROMPTLAYER_API_KEY: pl_d0ebd6afd1d7d4a8bdbc4d71ea5ce7a2
+# SERPAPI_API_KEY: 76e858c63d9e49bdb24be1de66793a73fa4871e16b0bacdcf2714ce06efcdaee
+# NEO4J_PASSWORD: # your password to neo4j

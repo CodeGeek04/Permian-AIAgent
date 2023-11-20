@@ -1,0 +1,35 @@
+2023-04-19 23:11:50,083 - AgentLogger - INFO - BUILDING DATALOADER.
+2023-04-19 23:11:50,322 - AgentLogger - INFO - INITIALIZING AGENT.
+2023-04-19 23:12:43,706 - AgentLogger - INFO - STARTING EVALUATION.
+2023-04-19 23:14:50,874 - AgentLogger - INFO - DONE add a text Hello Kapwing.
+2023-04-19 23:14:50,880 - AgentLogger - INFO - RUNNING TIME IS 127.11608910560608.
+2023-04-19 23:14:50,880 - AgentLogger - INFO - IS DONE - True.
+2023-04-19 23:16:55,911 - AgentLogger - INFO - DONE put To be continue... here.
+2023-04-19 23:16:55,914 - AgentLogger - INFO - RUNNING TIME IS 125.00048089027405.
+2023-04-19 23:16:55,914 - AgentLogger - INFO - IS DONE - True.
+2023-04-19 23:31:54,353 - AgentLogger - INFO - FAILED captions like this : https://www.instagram.com/p/CjlFXLDB4O5/.
+2023-04-19 23:34:00,295 - AgentLogger - INFO - DONE New title screen put: The World's Most Unique Pizzeria?.
+2023-04-19 23:34:00,304 - AgentLogger - INFO - RUNNING TIME IS 125.9148919582367.
+2023-04-19 23:34:00,304 - AgentLogger - INFO - IS DONE - True.
+2023-04-19 23:35:58,704 - AgentLogger - INFO - DONE text here - Frankies.
+2023-04-19 23:35:58,708 - AgentLogger - INFO - RUNNING TIME IS 118.35866403579712.
+2023-04-19 23:35:58,708 - AgentLogger - INFO - IS DONE - True.
+2023-04-19 23:39:18,085 - AgentLogger - INFO - DONE Add banner with texts "Part 1".
+2023-04-19 23:39:18,089 - AgentLogger - INFO - RUNNING TIME IS 199.35100507736206.
+2023-04-19 23:39:18,089 - AgentLogger - INFO - IS DONE - True.
+2023-04-19 23:43:34,589 - AgentLogger - INFO - FAILED put BOXHAUS as banner text.
+2023-04-19 23:51:36,017 - AgentLogger - INFO - DONE Change "Hello Kapwing" to orange.
+2023-04-19 23:51:36,020 - AgentLogger - INFO - RUNNING TIME IS 481.38814067840576.
+2023-04-19 23:51:36,020 - AgentLogger - INFO - IS DONE - True.
+2023-04-20 00:00:44,396 - AgentLogger - INFO - DONE Change the color of "To be continue..." to sea green.
+2023-04-20 00:00:44,398 - AgentLogger - INFO - RUNNING TIME IS 548.3483519554138.
+2023-04-20 00:00:44,398 - AgentLogger - INFO - IS DONE - True.
+2023-04-20 00:01:18,244 - AgentLogger - INFO - DONE caption 'https://www.instagram.com/p/CjlFXLDB4O5/' color should be red.
+2023-04-20 00:01:18,244 - AgentLogger - INFO - RUNNING TIME IS 33.811420917510986.
+2023-04-20 00:01:18,245 - AgentLogger - INFO - IS DONE - False.
+2023-04-20 00:01:22,540 - AgentLogger - INFO - FAILED adjust 'The World's Most Unique Pizzeria?' color navy.
+2023-04-20 00:01:28,123 - AgentLogger - INFO - FAILED make "Frankies" text color deep pink.
+2023-04-20 00:02:09,108 - AgentLogger - INFO - FAILED pls change the "Part 1" to that lime color.
+2023-04-20 00:04:10,550 - AgentLogger - INFO - DONE choose white color for BOXHAUS.
+2023-04-20 00:04:10,554 - AgentLogger - INFO - RUNNING TIME IS 121.43675708770752.
+2023-04-20 00:04:10,554 - AgentLogger - INFO - IS DONE - True.
